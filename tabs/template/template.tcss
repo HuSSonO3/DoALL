@@ -1,0 +1,51 @@
+Placeholder {
+    height: 100%;
+}
+
+#noting_top {
+    height: 50%;
+    width: 100%;
+    layout: grid;
+    grid-size: 2 2;
+}
+
+#noting_left {
+    row-span: 2;
+}
+
+#noting_bot {
+    height: 50%;
+    width: 100%;
+    layout: grid;
+    grid-size: 8 8;
+}
+
+#noting_c1 {
+    row-span: 4;
+    column-span: 8;
+    height: 100%;
+}
+
+#noting_col1, #noting_col2, #noting_col3 {
+    width: 1fr;
+}
+
+#noting_p1 {
+    row-span: 4;
+    column-span: 4;
+}
+
+#noting_p2 {
+    row-span: 2;
+    column-span: 4;
+}
+
+#noting_p3 {
+    row-span: 2;
+    column-span: 2;
+}
+
+#noting_p4 {
+    row-span: 1;
+    column-span: 2;
+}

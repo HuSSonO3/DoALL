@@ -1,24 +1,17 @@
-Tabs {
+TabbedContent {
     dock: top;
 }
-Screen {
-    align: center middle;
-}
-Label {
-    margin:1 1;
-    width: 100%;
-    height: 100%;
-    background: $panel;
-    border: tall $primary;
-    content-align: center middle;
+
+ContentSwitcher{
+    height: 1fr;
 }
 
-close-btn {
-        min-width: 6;
-        height: 1;
-        border: none;
-        background: transparent;
-        color: $error;
-    }
-.close-btn:hover { background: $error 20%; }
-.tab-header { height: 3; align: right middle; }
+TabPane {
+    overflow-y: auto;
+    height: 1fr;
+    padding-bottom: 1;  /* adjust to match your footer height */
+}
+
+Screen {
+    layers: base floating;
+}

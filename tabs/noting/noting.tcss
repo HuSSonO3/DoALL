@@ -1,0 +1,26 @@
+
+#noting_container {
+    height: 100%;
+    layout: grid;
+    grid-size: 2 1; 
+    grid-columns: 1fr 3fr; 
+    grid-gutter: 1;
+}
+
+#noting_tree {
+    height: 100%;
+}
+
+#noting_text {
+    height: 100%;
+}
+
+#new_file_input {
+    display: none;
+    layer: floating;
+    width: 60%;
+    height: 3;
+    border: round ;
+    offset-x: 50%;
+    offset-y: 180%;
+}

@@ -1,24 +1,23 @@
 from textual.app import App, events, ComposeResult
 from textual.widgets import Button, Header,  Footer, Label, Tabs, TabbedContent , TabPane, Placeholder, Select
 from textual.events import Key
-from tabs.noting import DashboardTab
-
+from tabs.central import DashboardTab, TimerTab
 
 class DoAllApp(App):
     """Demonstrates the Tabs widget."""
 
     
-    # CSS_PATH = "text.tcss"
+    CSS_PATH = "text.tcss"
 
     TAB_OPTIONS = [
         ("red", DashboardTab("Dashboard", id="Dashboard")),
-        ("blue", DashboardTab("IT", id="IT")),
+        ("blue", TimerTab("IT", id="IT")),
     ]
 
     OPEN_TABS = []
 
     BINDINGS = [
-    ("x", "exit", "Exit Tab (Except +)"),
+    ("x", "exit", "Exit Tab (Except '+')"),
 
     ]
 
@@ -30,7 +29,7 @@ class DoAllApp(App):
         
     def compose(self) -> ComposeResult:
  
-        with TabbedContent():
+        with TabbedContent(id="tabbed"):
             with TabPane("+", id="add"):
                 yield Label("Pick a tab:")
                 yield Select(self.TAB_OPTIONS, prompt="Choose...", id="tab-select")
@@ -65,7 +64,7 @@ class DoAllApp(App):
         select.clear()
 
         self.call_after_refresh(lambda: setattr(self.query_one(TabbedContent), 'active', new_tab))
-
+        
     def on_tabbed_content_tab_activated(self, event: TabbedContent.TabActivated) -> None:
         """Handle TabActivated message sent by Tabs."""
         # active_pane = event.pane  # The TabPane widget
