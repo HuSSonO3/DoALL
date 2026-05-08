@@ -1,26 +1,71 @@
+$radius: 4;
 
 #noting_container {
     height: 100%;
     layout: grid;
     grid-size: 2 1; 
-    grid-columns: 1fr 3fr; 
+    grid-columns: 1fr 4.5fr; 
     grid-gutter: 1;
+    background: $background;
+    padding: 1;
 }
 
 #noting_tree {
     height: 100%;
+    border: round $primary 40%;
+    padding: 0 1;
+    scrollbar-color: $primary 40%;
+    scrollbar-background: $background;
 }
 
-#noting_text {
+#noting_tree:focus-within {
+    border: tall $accent;
+}
+
+#noting_scroll {
     height: 100%;
+    overflow-y: auto;
+    border: round $primary 40%;
+    scrollbar-color: $primary 40%;
+    scrollbar-background: $background;
 }
 
-#new_file_input {
-    display: none;
-    layer: floating;
-    width: 60%;
-    height: 3;
-    border: round ;
-    offset-x: 50%;
-    offset-y: 180%;
+#noting_scroll:focus {
+    border: tall $accent;
+}
+
+/* modals */
+FileModal {
+    align: center middle;
+}
+
+DeleteModal {
+    align: center middle;
+}
+
+/* shared modal container style */
+#new_file_container, #delete_file_container {
+    width: 50%;
+    height: auto;
+    background: $surface;
+    padding: 1 4 2 4;
+    border: round $primary;
+}
+
+#new_file_container > Label, #delete_file_container > Label {
+    margin: 1 0;
+    text-wrap: wrap;
+    width: 100%;
+    color: $text;
+    text-style: bold;
+}
+
+#new_file_container > Input {
+    border: round $primary 60%;
+    margin-bottom: 1;
+}
+
+#delete_file_container > Button {
+    width: 100%;
+    margin-top: 1;
 }
