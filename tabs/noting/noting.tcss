@@ -1,5 +1,3 @@
-$radius: 4;
-
 #noting_container {
     height: 100%;
     layout: grid;

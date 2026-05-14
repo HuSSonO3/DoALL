@@ -1,0 +1,22 @@
+#stopwatch_container{
+    width: 100%;
+    height: 70%;
+    background: $boost;
+    align: center middle;
+}
+
+#stopwatch_digits {
+    border: round $accent;
+    width: auto;
+}
+
+#stopwatch_button_container{
+    layout: grid;
+    grid-size: 2 1;
+    align: center top;
+}
+
+#stopwatch_lap_table{
+    height: 1fr;
+    width: 50%;
+}

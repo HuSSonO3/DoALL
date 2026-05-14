@@ -1,2 +1,2 @@
 from .noting.noting import NoteTakingTab
-from .timer.timer import TimerTab
+from .clock.clock import ClockTab
