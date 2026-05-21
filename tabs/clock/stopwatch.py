@@ -9,7 +9,7 @@ class StopwatchWidget(Widget):
 
     def compose(self) -> ComposeResult:
         yield Container(
-            Digits("", id="stopwatch_digits"),
+            Container(Digits("", id="stopwatch_digits"),id="stop_watch_digits_container"),
             Container(
                 Button("Start", id="stopwatch_start"),
                 Button("Lap", id="stopwatch_lap"),
@@ -65,7 +65,7 @@ class StopwatchWidget(Widget):
         self.replace_buttons("start")
         self.original_time = time.perf_counter()
         # self.query_one(Digits).update(f"{original_time}")
-        self.my_timer = self.set_interval(0.001, self.update_clock)
+        self.my_stopwatch = self.set_interval(0.001, self.update_clock)
 
     
     def update_clock(self) -> None:
@@ -86,16 +86,16 @@ class StopwatchWidget(Widget):
     def pause_stopwatch(self) -> None:
         self.replace_buttons("paused")
         self.paused_time = self.diff  
-        self.my_timer.pause()
+        self.my_stopwatch.pause()
 
     def resume_stopwatch(self) -> None:
         self.replace_buttons("resumed")
         self.original_time = time.perf_counter() - self.paused_time 
-        self.my_timer.resume()
+        self.my_stopwatch.resume()
 
     def clear_stopwatch(self) -> None:
         self.replace_buttons("cleared")
-        self.my_timer.stop()
+        self.my_stopwatch.stop()
         now = "00:00:00"
         clock = datetime.strptime(now, "%H:%M:%S")
         self.query_one("#stopwatch_digits", Digits).update(f"{clock:%T}")

@@ -2,7 +2,11 @@
     width: 100%;
     height: 70%;
     background: $boost;
+}
+
+#stop_watch_digits_container{
     align: center middle;
+
 }
 
 #stopwatch_digits {
@@ -19,4 +23,151 @@
 #stopwatch_lap_table{
     height: 1fr;
     width: 50%;
+}
+
+
+#timer_first_container {
+    width: 100%;
+    height: 70%;
+    align: center middle;
+    grid-size: 3 1;
+    grid-columns: 12 12 12;  /* columns shrink to content */
+}
+
+
+#timer_overall_container, #timer_overall_container2, #timer_overall_container3{
+    align: center middle;
+    layout: vertical;
+}
+
+#timer_button_add1, #timer_button_add2, #timer_button_add3, #timer_button_minus1, #timer_button_minus2, #timer_button_minus3{
+    border: none;
+    min-width: 7;
+    min-height: 3;
+    margin-left: 0;    
+}
+
+.timer_digit_container{
+    layout: horizontal;
+    padding: 0 1 0 1;
+    height: 3;
+}
+
+#timer_label, #timer_label2 {
+    padding: 1 1 0 0;
+}
+
+#timer_start_container{
+    align: center middle;
+}
+
+#timer_second_container {
+    width: 100%;
+    height: 70%;
+    align: center middle;
+    grid-size: 1 2;
+    grid-rows: 5 5;
+}
+
+#timer_grid_after{
+    grid-size: 3 1;
+    grid-columns: 12 12 12; 
+    align: center middle;
+}
+
+#timer_buttons_container{
+    grid-size: 3 1;
+    grid-columns: 12 12 12; 
+    grid-gutter: 1;
+    align: center middle;
+}
+
+#timer_pause_container{
+    align: center middle;
+}
+
+
+AlarmAddModal {
+    align: center middle;
+}
+
+/* shared modal container style */
+#alarm_add_modal_container {
+    width: 50%;
+    height: 80%;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+    layout: vertical;        /* stack children vertically */
+    overflow: hidden auto;
+}
+
+
+#alarm_button_add, #alarm_button_add2, #alarm_button_minus, #alarm_button_minus2{
+    border: none;
+    min-width: 7;
+    min-height: 3;
+    margin-left: 0; 
+    background: darkcyan;
+}
+
+#alarm_add_grid {
+    grid-size: 2 1;
+    grid-columns: 12 12;
+    align: center middle;
+    height: 11;
+}
+
+
+.alarm_digit_add_container {
+    height: 3;
+    layout: horizontal;
+}
+
+.alarm_digit_add_container > Label {
+    padding: 1 2 0 0;
+}
+
+
+#alarm_add_details_container {
+    height: auto;
+    width: 100%;
+    layout: vertical;
+}
+
+#alarm_add_details_container > Container {
+    height: auto;
+    width: 100%;
+    layout: horizontal;
+    align: left middle;
+    padding: 0 0 1 1;
+}
+
+#alarm_repeat_header {
+    layout: horizontal;  
+   
+}
+
+#alarm_selection_toggle {
+    margin: 0 0 0 0;
+}
+
+#alarm_selection_options {
+    display: none;
+    margin: -1 0 0 0;
+}
+
+#alarm_add_details_container > Container > Label {   
+    padding: 1 2 0 0;
+}
+
+#alarm_add_details_container > Container > Input {   
+    padding: 0 0 0 2;
+    width:80%;
+}
+
+#alarm_added_selection_container {
+    height: auto;
+    align: center middle;
+    padding: 1 0 0 0;
 }
