@@ -1,16 +1,17 @@
 from textual.app import App, events, ComposeResult
 from textual.widgets import Button, Header,  Footer, Label, Tabs, TabbedContent , TabPane, Placeholder, Select
 from textual.events import Key
-from tabs.central import NoteTakingTab, ClockTab
+from tabs.central import NoteTakingTab, ClockTab, MusicTab
 
 class DoAllApp(App):
     """Demonstrates the Tabs widget."""
 
-    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss"]
+    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss"]
 
     TAB_OPTIONS = [
         ("red", NoteTakingTab("Note Taker", id="note_taker")),
         ("blue", ClockTab("Clock", id="clock")),
+        ("yellow", MusicTab("Music", id="music")),
     ]
 
     OPEN_TABS = []

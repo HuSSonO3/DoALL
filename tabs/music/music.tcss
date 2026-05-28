@@ -1,0 +1,240 @@
+/* Music Tab - Main Layout */
+
+#music_library_panel {
+    width: 55%;
+    height: 1fr;
+    border: round $surface;
+    padding: 1;
+}
+
+#music_library_title {
+    text-style: bold;
+    color: $accent;
+    padding: 0 0 1 0;
+}
+
+#music_right_panel {
+    width: 45%;
+    height: 1fr;
+    padding: 0 0 0 1;
+    layout: grid;
+
+}
+
+/* Path input row */
+
+#music_path_row {
+    height: auto;
+    margin-bottom: 1;
+}
+
+#music_path_input {
+    width: 1fr;
+}
+
+#music_scan_button {
+    min-width: 8;
+}
+
+#music_status_label {
+    height: auto;
+    padding: 0 0 1 0;
+}
+
+/* View toggle */
+
+#music_view_toggle {
+    height: auto;
+    padding: 0 0 1 0;
+    layout: horizontal;
+}
+
+/* --- Albums View --- */
+
+#music_albums_container {
+    height: 1fr;
+}
+
+#music_albums_heading {
+    width: 1fr;
+    text-style: bold;
+    padding: 0 0 1 0;
+}
+
+#music_albums_table {
+    height: 1fr;
+    border: round $accent;
+}
+
+/* --- Tracks View --- */
+
+#music_tracks_container {
+    height: 1fr;
+}
+
+#music_tracks_header {
+    height: auto;
+    padding: 0 0 1 0;
+}
+
+#music_tracks_actions {
+    height: auto;
+    padding: 0 0 1 0;
+}
+
+#music_tracks_table {
+    height: 1fr;
+    border: round $accent;
+}
+
+/* -- Playback Controls -- */
+
+#music_playback_container {
+    height: auto;
+    border: round $surface;
+    padding: 1;
+}
+
+#music_now_playing {
+    text-style: bold;
+    color: $accent;
+    text-align: center;
+    height: auto;
+}
+
+#music_now_artist {
+    text-align: center;
+    color: $text-muted;
+    height: auto;
+    padding: 0 0 1 0;
+}
+
+#music_transport_row {
+    height: auto;
+    align: center middle;
+    padding: 1 0;
+}
+
+#music_transport_row > Button {
+    min-width: 5;
+    margin: 0 1;
+}
+
+#music_seek_row {
+    height: auto;
+    align: center middle;
+    padding: 0 0 1 0;
+}
+
+#music_seek_row > Label {
+    width: 5;
+    text-align: center;
+}
+
+#music_seek_bar {
+    width: 1fr;
+}
+
+#music_mode_row {
+    height: auto;
+    align: center middle;
+}
+
+#music_mode_row > Button {
+    min-width: 14;
+    margin: 0 1;
+}
+
+Button.mode-active {
+    background: $accent;
+    color: $text;
+}
+
+/* --- Queue Panel --- */
+
+#music_queue_container {
+    height: auto;
+    border: round $surface;
+    padding: 1;
+}
+
+#music_queue_heading {
+    text-style: bold;
+    padding: 0 0 1 0;
+}
+
+#music_queue_table {
+    height: 6;
+    border: round $accent;
+}
+
+#music_queue_buttons {
+    height: auto;
+    align: center middle;
+    padding: 1 0 0 0;
+}
+
+#music_queue_buttons > Button {
+    margin: 0 1;
+}
+
+/* --- Playlists --- */
+
+#music_playlists_container {
+    height: auto;
+    border: round $surface;
+    padding: 1;
+}
+
+#music_playlists_heading {
+    text-style: bold;
+    padding: 0 0 1 0;
+}
+
+#music_playlists_table {
+    height: 6;
+    border: round $accent;
+}
+
+#music_playlists_buttons {
+    height: auto;
+    align: center middle;
+    padding: 1 0 0 0;
+}
+
+#music_playlists_buttons > Button {
+    margin: 0 1;
+}
+
+/* --- Modal Screens --- */
+
+PlaylistNameModal, ClearQueueModal, ConfirmDeleteModal {
+    align: center middle;
+}
+
+#music_modal_container {
+    width: 40%;
+    height: auto;
+    background: $surface;
+    padding: 2 3;
+    border: round $primary;
+    layout: vertical;
+}
+
+#music_modal_text {
+    text-align: center;
+    padding: 0 0 1 0;
+}
+
+#music_playlist_name_input {
+    margin: 0 0 1 0;
+}
+
+#music_modal_buttons {
+    height: auto;
+    align: center middle;
+}
+
+#music_modal_buttons > Button {
+    margin: 0 1;
+}
