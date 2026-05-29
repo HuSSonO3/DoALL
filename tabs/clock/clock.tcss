@@ -10,7 +10,7 @@
 }
 
 #stopwatch_digits {
-    border: round $accent;
+    border: round #c49b6c;
     width: auto;
 }
 
@@ -20,9 +20,20 @@
     align: center top;
 }
 
+#stopwatch_start {
+    background: #c49b6c;
+    color: #1a1a1a;
+}
+
+#stopwatch_lap {
+    background: #1e3b4d;
+    color: #e8e8e8;
+}
+
 #stopwatch_lap_table{
     height: 1fr;
     width: 50%;
+    border: round #1e3b4d 40%;
 }
 
 
@@ -44,7 +55,17 @@
     border: none;
     min-width: 7;
     min-height: 3;
-    margin-left: 0;    
+    margin-left: 0;
+}
+
+#timer_button_add1, #timer_button_add2, #timer_button_add3 {
+    background: #c49b6c;
+    color: #1a1a1a;
+}
+
+#timer_button_minus1, #timer_button_minus2, #timer_button_minus3 {
+    background: #1e3b4d;
+    color: #e8e8e8;
 }
 
 .timer_digit_container{
@@ -61,6 +82,11 @@
     align: center middle;
 }
 
+#timer_start {
+    background: #c49b6c;
+    color: #1a1a1a;
+}
+
 #timer_second_container {
     width: 100%;
     height: 70%;
@@ -71,19 +97,39 @@
 
 #timer_grid_after{
     grid-size: 3 1;
-    grid-columns: 12 12 12; 
+    grid-columns: 12 12 12;
     align: center middle;
 }
 
 #timer_buttons_container{
     grid-size: 3 1;
-    grid-columns: 12 12 12; 
+    grid-columns: 12 12 12;
     grid-gutter: 1;
     align: center middle;
 }
 
+#timer_cancel {
+    background: #1e3b4d;
+    color: #e8e8e8;
+}
+
+#timer_resume {
+    background: #c49b6c;
+    color: #1a1a1a;
+}
+
+#timer_restart {
+    background: #1e3b4d;
+    color: #e8e8e8;
+}
+
 #timer_pause_container{
     align: center middle;
+}
+
+#timer_pause {
+    background: #1e3b4d;
+    color: #e8e8e8;
 }
 
 
@@ -93,22 +139,39 @@ AlarmAddModal {
 
 /* shared modal container style */
 #alarm_add_modal_container {
-    width: 50%;
-    height: 80%;
+    width: 40%;
+    height: auto;
     background: $surface;
     padding: 1 2;
-    border: round $primary;
+    border: round #c49b6c 60%;
     layout: vertical;        /* stack children vertically */
-    overflow: hidden auto;
+}
+
+#small_label {
+    text-style: dim;
+    color: $text 60%;
+    margin-top: 1;
+    width: 100%;
+    text-align: center;
 }
 
 
-#alarm_button_add, #alarm_button_add2, #alarm_button_minus, #alarm_button_minus2{
+#alarm_button_add, #alarm_button_add2 {
     border: none;
     min-width: 7;
     min-height: 3;
-    margin-left: 0; 
-    background: darkcyan;
+    margin-left: 0;
+    background: #c49b6c;
+    color: #1a1a1a;
+}
+
+#alarm_button_minus, #alarm_button_minus2 {
+    border: none;
+    min-width: 7;
+    min-height: 3;
+    margin-left: 0;
+    background: #1e3b4d;
+    color: #e8e8e8;
 }
 
 #alarm_add_grid {
@@ -144,8 +207,8 @@ AlarmAddModal {
 }
 
 #alarm_repeat_header {
-    layout: horizontal;  
-   
+    layout: horizontal;
+
 }
 
 #alarm_selection_toggle {
@@ -157,11 +220,11 @@ AlarmAddModal {
     margin: -1 0 0 0;
 }
 
-#alarm_add_details_container > Container > Label {   
+#alarm_add_details_container > Container > Label {
     padding: 1 2 0 0;
 }
 
-#alarm_add_details_container > Container > Input {   
+#alarm_add_details_container > Container > Input {
     padding: 0 0 0 2;
     width:80%;
 }
@@ -181,12 +244,19 @@ AlarmAddModal {
 #alarm_table {
     height: 1fr;
     width: 100%;
-    border: round $accent;
+    border: round #c49b6c 60%;
 }
 
 #alarm_add {
     dock: bottom;
     margin: 1;
+    background: #c49b6c;
+    color: #1a1a1a;
+}
+
+#alarm_added_selection {
+    background: #c49b6c;
+    color: #1a1a1a;
 }
 
 /* Ring modal */
@@ -199,7 +269,7 @@ AlarmRingModal {
     height: 30%;
     background: $surface;
     padding: 1 2;
-    border: round $error;
+    border: round #c49b6c;
     layout: vertical;
     align: center middle;
 }

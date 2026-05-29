@@ -1,17 +1,19 @@
 from textual.app import App, events, ComposeResult
 from textual.widgets import Button, Header,  Footer, Label, Tabs, TabbedContent , TabPane, Placeholder, Select
 from textual.events import Key
-from tabs.central import NoteTakingTab, ClockTab, MusicTab
+from tabs.central import NoteTakingTab, ClockTab, MusicTab, GamesTab, TodoTab
 
 class DoAllApp(App):
     """Demonstrates the Tabs widget."""
 
-    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss"]
+    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss", "./tabs/games/games.tcss", "./tabs/todos/todos.tcss"]
 
     TAB_OPTIONS = [
-        ("red", NoteTakingTab("Note Taker", id="note_taker")),
-        ("blue", ClockTab("Clock", id="clock")),
-        ("yellow", MusicTab("Music", id="music")),
+        ("Note Taker", NoteTakingTab("Note Taker", id="note_taker")),
+        ("Clock", ClockTab("Clock", id="clock")),
+        ("Music", MusicTab("Music", id="music")),
+        ("Games", GamesTab("Games", id="games")),
+        ("Todos", TodoTab("Todos", id="todos")),
     ]
 
     OPEN_TABS = []
@@ -45,25 +47,21 @@ class DoAllApp(App):
         # active_tab = tabbed_content.active  # Returns the id of the active tab
         # self.log("PEKAPOO")
 
-    def on_select_changed(self, event: Select.Changed) -> None:
-        
-        if event.value == Select.BLANK or  event.value == Select.NULL:
+    async def on_select_changed(self, event: Select.Changed) -> None:
+        if event.select.id != "tab-select":
+            return  # only handle the tab-picker Select
+
+        if event.value == Select.BLANK or event.value == Select.NULL:
             return  # nothing selected
 
         # add new tabs
         content = self.query_one(TabbedContent)
         if not event.value in self.OPEN_TABS:
-            content.add_pane(event.value)
+            await content.add_pane(event.value)
             self.OPEN_TABS.append(event.value)
-        else: 
-            self.log("TESTTTT")
 
-        new_tab = event.value.id
-        
-        select = self.query_one(Select)
-        select.clear()
-
-        self.call_after_refresh(lambda: setattr(self.query_one(TabbedContent), 'active', new_tab))
+        self.query_one(TabbedContent).active = event.value.id
+        self.query_one("#tab-select", Select).clear()
         
     def on_tabbed_content_tab_activated(self, event: TabbedContent.TabActivated) -> None:
         """Handle TabActivated message sent by Tabs."""

@@ -9,10 +9,13 @@ import time
 from textual import events
 
 class TimerWidget(Widget, can_focus=True):
-    # BINDINGS = [
-    #         Binding("k", "change_count(1)", "Increment"),  
-    #         Binding("j", "change_count(-1)", "Decrement"),
-    #     ]
+    BINDINGS = [
+        Binding("s", "start", "Start"),
+        Binding("p", "pause", "Pause"),
+        Binding("r", "resume", "Resume"),
+        Binding("c", "cancel", "Cancel"),
+        Binding("t", "restart", "Restart"),
+    ]
         
     def compose(self) -> ComposeResult:
         yield Grid( 
@@ -70,10 +73,8 @@ class TimerWidget(Widget, can_focus=True):
         self.after2 = self.query_one("#timer_minutes_after", Digits)
         self.after3 = self.query_one("#timer_seconds_after", Digits)
 
-    def on_button_pressed(self, event:Button.Pressed) -> None:
-        button_id = event.button.id
-        button_classes = event.button.classes
-        button_label = event.button.label
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        self.buttons_logic(event.button.id, event.button.classes)
 
     def buttons_logic(self, button_id, button_classes):
         match button_id:
@@ -114,9 +115,11 @@ class TimerWidget(Widget, can_focus=True):
         self.log(queried_digit.value)
 
     def start_timer(self):
-        # Prolly having one digit instead of 6 would have been easier but alas.
-
         self.timer_in_seconds = (int(self.before1.value) * 3600) + (int(self.before2.value) * 60) + int(self.before3.value)
+
+        if self.timer_in_seconds <= 0:
+            self.notify("Please set a time greater than 00:00:00.", severity="warning")
+            return
 
         self.first_container.styles.display = 'none'
         self.start_container.styles.display = 'none'
@@ -185,6 +188,28 @@ class TimerWidget(Widget, can_focus=True):
         self.first_container.styles.display = 'block'
         self.second_container.styles.display = 'none'
         self.start_container.styles.display = 'block'
+
+    # ── Keybinding actions ──
+
+    def action_start(self) -> None:
+        if self.first_container.styles.display != "none":
+            self.start_timer()
+
+    def action_pause(self) -> None:
+        if self.pause_container.styles.display != "none":
+            self.pause_timer()
+
+    def action_resume(self) -> None:
+        if self.buttons_container.styles.display != "none":
+            self.resume_timer()
+
+    def action_cancel(self) -> None:
+        if self.buttons_container.styles.display != "none":
+            self.cancel_timer()
+
+    def action_restart(self) -> None:
+        if self.buttons_container.styles.display != "none":
+            self.restart_timer()
 
 
 class HoldButton(Button):

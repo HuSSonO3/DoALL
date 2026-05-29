@@ -36,6 +36,7 @@ def init_db():
 
 class AlarmWidget(Widget, can_focus=True):
     BINDINGS = [
+        Binding("a", "add_alarm", "Add"),
         Binding("d", "delete_alarm", "Delete"),
         Binding("t", "toggle_alarm", "Toggle On/Off"),
     ]
@@ -117,6 +118,9 @@ class AlarmWidget(Widget, can_focus=True):
                 conn.commit()
             conn.close()
             self.refresh_alarm_table()
+
+    def action_add_alarm(self) -> None:
+        self.app.push_screen(AlarmAddModal(), self.on_alarm_added)
 
     def check_alarms(self):
         now = datetime.datetime.now()
@@ -220,6 +224,7 @@ class AlarmAddModal(ModalScreen):
                 SelectionList(*self.repeat_options, id="alarm_selection_options"),
                 id="alarm_add_details_container"),
             Container(Button("Add", id="alarm_added_selection"), id="alarm_added_selection_container"),
+            Label("Press Escape to close", id="small_label"),
             id="alarm_add_modal_container")
 
     def on_mount(self):

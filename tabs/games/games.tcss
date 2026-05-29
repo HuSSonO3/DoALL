@@ -1,0 +1,284 @@
+/* ── Win Modal (shared) ─────────────────────────────────────── */
+
+WinModal {
+    align: center middle;
+}
+
+#win_modal_container {
+    width: 40;
+    height: auto;
+    background: $surface;
+    padding: 2 3;
+    border: thick $accent;
+    align: center middle;
+}
+
+#win_modal_message {
+    text-style: bold;
+    content-align: center middle;
+    padding: 1 0;
+    width: 100%;
+}
+
+#win_modal_container > Button {
+    width: 100%;
+    margin: 1 0;
+}
+
+/* ── Tic Tac Toe ─────────────────────────────────────────────── */
+
+#ttt_wrapper {
+    layout: vertical;
+    width: 100%;
+    height: 100%;
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 1 2;
+}
+
+#ttt_title {
+    text-style: bold;
+    color: $accent;
+    content-align: center middle;
+    padding: 1 0;
+    width: 100%;
+}
+
+#ttt_status {
+    content-align: center middle;
+    padding: 1 0;
+    width: 100%;
+}
+
+#ttt_grid {
+    align-horizontal: center;
+    align-vertical: middle;
+    grid-size: 3 3;
+    grid-gutter: 1 2;
+}
+
+.ttt_cell {
+    width: 8;
+    height: 3;
+    content-align: center middle;
+}
+
+#ttt_scores {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 1 2;
+    border: tall $accent;
+    background: $boost;
+    margin: 1 0;
+}
+
+#ttt_scores > Label {
+    padding: 0 3;
+    text-style: bold;
+    color: $accent;
+}
+
+#ttt_reset {
+    width: 100%;
+    content-align: center middle;
+    margin: 1 0;
+}
+
+/* ── Pong ────────────────────────────────────────────────────── */
+
+#pong_wrapper {
+    layout: vertical;
+    width: 100%;
+    height: 100%;
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 1;
+}
+
+#pong_header {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 0 1;
+}
+
+#pong_title {
+    text-style: bold;
+    color: $accent;
+    padding: 0 2;
+}
+
+#pong_help {
+    color: $text-disabled;
+    padding: 0 2;
+}
+
+#pong_score_row {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 0 1;
+}
+
+#pong_score_row > Label {
+    padding: 0 4;
+    text-style: bold;
+}
+
+#pong_field {
+    height: 22;
+    min-height: 22;
+    width: 100%;
+    content-align: center middle;
+    background: $boost;
+    color: $text;
+    padding: 1 2;
+    margin: 1 0;
+}
+
+#pong_buttons {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 1 0;
+}
+
+#pong_buttons > Button {
+    margin: 0 1;
+}
+
+/* ── Snake ────────────────────────────────────────────────────── */
+
+#snake_wrapper {
+    layout: vertical;
+    width: 100%;
+    height: 100%;
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 1;
+}
+
+#snake_header {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 0 1;
+}
+
+#snake_title {
+    text-style: bold;
+    color: $accent;
+    padding: 0 2;
+}
+
+#snake_help {
+    color: $text-disabled;
+    padding: 0 2;
+}
+
+#snake_score {
+    content-align: center middle;
+    text-style: bold;
+    color: $accent;
+    padding: 0 0 1 0;
+    width: 100%;
+}
+
+#snake_field {
+    height: 24;
+    min-height: 24;
+    width: 100%;
+    content-align: center middle;
+    background: $boost;
+    color: $text;
+    padding: 1 2;
+    margin: 1 0;
+}
+
+#snake_buttons {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 1 0;
+}
+
+#snake_buttons > Button {
+    margin: 0 1;
+}
+
+/* ── Connect Four ─────────────────────────────────────────────── */
+
+#c4_wrapper {
+    layout: vertical;
+    width: 100%;
+    height: 100%;
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 1 2;
+}
+
+#c4_title {
+    text-style: bold;
+    color: $accent;
+    content-align: center middle;
+    padding: 1 0;
+    width: 100%;
+}
+
+#c4_status {
+    content-align: center middle;
+    padding: 1 0;
+    width: 100%;
+}
+
+#c4_columns {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 0 0 1 0;
+}
+
+.c4_drop {
+    width: 2;
+    min-height: 3;
+    content-align: center middle;
+    margin: 0 1;
+}
+
+#c4_grid {
+    align-horizontal: center;
+    align-vertical: middle;
+    grid-size: 7 6;
+    grid-gutter: 0 0;
+}
+
+.c4_cell {
+    width: 2;
+    height: 1;
+    content-align: center middle;
+}
+
+.c4_p1 {
+    color: $accent;
+    text-style: bold;
+}
+
+.c4_p2 {
+    color: $primary;
+    text-style: bold;
+}
+
+#c4_scores {
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 1 2;
+    border: tall $accent;
+    background: $boost;
+    margin: 1 0;
+}
+
+#c4_scores > Label {
+    padding: 0 3;
+    text-style: bold;
+    color: $accent;
+}
+
+#c4_reset {
+    width: 100%;
+    content-align: center middle;
+    margin: 1 0;
+}

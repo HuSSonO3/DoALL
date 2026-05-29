@@ -5,6 +5,7 @@ from textual.containers import Container, Horizontal, HorizontalScroll, Vertical
 import os
 from pathlib import Path
 from textual.binding import Binding
+from textual import events
 import textwrap
 
 class FileModal(ModalScreen):
@@ -104,26 +105,9 @@ class NoteTakingTab(TabPane):
             
 
     async def on_directory_tree_file_selected(self, event: DirectoryTree.FileSelected):
-        self.log("HIIIIIIIIIIIIIIIIDasfskjfs")
-        self.log(event.path)
-
-        # Check if there is a markdown widget and remove it.
-        # markdown = self.query("#noting_view")
-        # if markdown:
-        #     await markdown.remove()
-
-        # # Check if there isnt a Text area and add it.
-        # if not self.query("#noting_text"):
-        #     await self.query_one("#noting_scroll").mount(
-        #         TextArea.code_editor("", language="markdown", id="noting_text")
-        #     )
-        #     self.query_one("#noting_text", TextArea).focus()
-
-        self.query_one("#noting_text").display = True
-        self.query_one("#noting_view").display = False
-
-        file = self.query_one("#noting_text", TextArea)
-        file.load_text(event.path.read_text())
+        # Load file content into TextArea (hidden), show rendered Markdown
+        self.query_one("#noting_text", TextArea).load_text(event.path.read_text())
+        self._show_preview()
     
     async def on_directory_tree_directory_selected(self, event: DirectoryTree.DirectorySelected):
         self.log("VHASahauioshdaujuiahduiah")
@@ -157,10 +141,32 @@ class NoteTakingTab(TabPane):
             self.query_one("#noting_view").display = True
             self.query_one("#noting_view", Markdown).update(content)
 
+    def _show_editor(self) -> None:
+        """Switch from Markdown preview to the TextArea editor."""
+        path = self.query_one(DirectoryTree).cursor_node.data.path
+        if not path.is_file():
+            self.notify("Select a file first.", severity="warning")
+            return
+        self.query_one("#noting_view").display = False
+        self.query_one("#noting_text").display = True
+        self.query_one("#noting_text", TextArea).focus()
+
+    def on_click(self, event: events.Click) -> None:
+        """Clicking the Markdown preview switches to the editor."""
+        # Walk up from the clicked widget to see if it's inside the preview area
+        widget = event.control if hasattr(event, "control") else None
+        if widget is None:
+            return
+        for ancestor in widget.ancestors_with_self:
+            if ancestor.id == "noting_scroll":
+                if self.query_one("#noting_view").display:
+                    self._show_editor()
+                return
+
     def on_text_area_changed(self, event: TextArea.Changed):
-        path = self.query_one(DirectoryTree)
-        path = path.cursor_node.data.path
-        path.write_text(event.text_area.text)        
+        path = self.query_one(DirectoryTree).cursor_node.data.path
+        if path.is_file():
+            path.write_text(event.text_area.text)        
 
     def on_key(self, event):
         if event.key == "n":

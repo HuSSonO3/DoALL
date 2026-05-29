@@ -2,10 +2,17 @@ from textual.widget import Widget
 from textual.app import ComposeResult
 from textual.widgets import Button, DataTable, Digits
 from textual.containers import Container
+from textual.binding import Binding
 from datetime import datetime, timedelta
 import time
 
-class StopwatchWidget(Widget):
+class StopwatchWidget(Widget, can_focus=True):
+
+    BINDINGS = [
+        Binding("s", "toggle_start", "Start/Pause/Resume"),
+        Binding("l", "lap", "Lap"),
+        Binding("c", "clear", "Clear"),
+    ]
 
     def compose(self) -> ComposeResult:
         yield Container(
@@ -103,4 +110,25 @@ class StopwatchWidget(Widget):
         table.clear()
         self.last_lap_time = 0.0
         self.lap_no = 1
+
+    # ── Keybinding actions ──
+
+    def action_toggle_start(self) -> None:
+        btn = self.query_one("#stopwatch_start", Button)
+        if btn.label == "Start":
+            self.start_stopwatch()
+        elif btn.label == "Pause":
+            self.pause_stopwatch()
+        elif btn.label == "Resume":
+            self.resume_stopwatch()
+
+    def action_lap(self) -> None:
+        btn = self.query_one("#stopwatch_lap", Button)
+        if btn.label == "Lap":
+            self.add_lap()
+
+    def action_clear(self) -> None:
+        btn = self.query_one("#stopwatch_lap", Button)
+        if btn.label == "Clear":
+            self.clear_stopwatch()
         
