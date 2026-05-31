@@ -1,0 +1,120 @@
+/* ── Main layout ── */
+#cheats_container {
+    height: 100%;
+    width: 100%;
+}
+
+#cheats_main {
+    height: 100%;
+    width: 100%;
+}
+
+/* ── Left panel: sheets ── */
+#cheats_left {
+    width: 28%;
+    height: 100%;
+    border-right: solid $boost;
+    padding: 1;
+}
+
+#cheats_sheets_heading {
+    text-style: bold;
+    color: $accent;
+    padding: 0 1;
+    height: 3;
+}
+
+#cheats_sheets_list {
+    height: 1fr;
+    border: solid $surface;
+}
+
+#cheats_sheet_buttons {
+    height: 3;
+    align: center middle;
+}
+
+/* ── Right panel: entries ── */
+#cheats_right {
+    width: 72%;
+    height: 100%;
+    padding: 1;
+}
+
+#cheats_entries_heading {
+    text-style: bold;
+    color: $accent;
+    padding: 0 1;
+    height: 3;
+}
+
+#cheats_entries_table {
+    height: 1fr;
+}
+
+#cheats_entry_buttons {
+    height: 3;
+    align: center middle;
+}
+
+#cheats_search {
+    width: 30%;
+}
+
+/* ── Modal dialogs ── */
+#cheats_delete_container {
+    margin: 5 10;
+    padding: 2 3;
+    border: solid $error;
+    background: $surface;
+    height: auto;
+    max-height: 18;
+}
+
+#cheats_delete_label {
+    text-style: bold;
+    padding: 1 0;
+    text-align: center;
+}
+
+#cheats_delete_buttons {
+    align: center middle;
+    padding: 1 0;
+}
+
+#cheats_delete_buttons Button {
+    margin: 0 1;
+}
+
+#cheats_form_container {
+    margin: 3 8;
+    padding: 2 3;
+    border: solid $accent;
+    background: $surface;
+    height: auto;
+    max-height: 30;
+}
+
+#cheats_form_title {
+    text-style: bold;
+    padding-bottom: 1;
+}
+
+#cheats_form_container Label {
+    padding-top: 1;
+}
+
+#cheats_form_container Input {
+    width: 100%;
+}
+
+#cheats_form_container Button {
+    margin-top: 2;
+    width: 100%;
+}
+
+#cheats_small_label {
+    text-style: dim italic;
+    text-align: center;
+    margin-top: 1;
+}
