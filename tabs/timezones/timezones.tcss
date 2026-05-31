@@ -1,0 +1,60 @@
+/* ── Main layout ── */
+#tz_container {
+    height: 100%;
+    width: 100%;
+}
+
+/* ── Mode row ── */
+#tz_mode_row {
+    height: 3;
+    align: center middle;
+    padding: 0 1;
+}
+
+#tz_mode_row Label {
+    margin-right: 1;
+    height: 100%;
+    content-align: center middle;
+}
+
+#tz_mode {
+    width: 20;
+}
+
+/* ── Controls ── */
+#tz_controls {
+    height: 3;
+    align: center middle;
+    padding: 0 1;
+}
+
+#tz_controls Button {
+    margin: 0 1;
+}
+
+#tz_controls Label {
+    margin-left: 1;
+    height: 100%;
+    content-align: center middle;
+}
+
+#tz_date, #tz_time {
+    width: 14;
+    margin: 0 1;
+}
+
+#tz_reference {
+    width: 20;
+    margin: 0 1;
+}
+
+/* ── Search ── */
+#tz_search {
+    height: 3;
+    margin: 0 1;
+}
+
+/* ── Results tables ── */
+#tz_table_countries, #tz_table_offsets {
+    height: 1fr;
+}
