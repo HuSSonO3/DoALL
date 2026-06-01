@@ -2,7 +2,11 @@ from textual.app import ComposeResult
 from textual.screen import Screen, ModalScreen
 from textual.widgets import Footer, Placeholder, TabPane, Label, DirectoryTree, TextArea, Input, Button, Markdown
 from textual.containers import Container, Horizontal, HorizontalScroll, VerticalScroll, Grid
+from shared import data_root
 import os
+
+NOTING_DIR = os.path.join(data_root(), "file_holders", "noting")
+os.makedirs(NOTING_DIR, exist_ok=True)
 from pathlib import Path
 from textual.binding import Binding
 from textual import events
@@ -97,7 +101,7 @@ class NoteTakingTab(TabPane):
     def compose(self) -> ComposeResult:
             
         yield Container(
-            DirectoryTree("./file_holders/noting", id="noting_tree"),    
+            DirectoryTree(NOTING_DIR, id="noting_tree"),    
             Container(Markdown(self.TEXT, id="noting_view"), 
             TextArea.code_editor("", language="markdown", id="noting_text"),
             id="noting_scroll")   
@@ -174,7 +178,7 @@ class NoteTakingTab(TabPane):
 
     def file_handler(self, filename: str | None):
         if filename:
-            new_file = Path("./file_holders/noting") / filename
+            new_file = Path(NOTING_DIR) / filename
             new_file.touch()
             self.app.query_one("#noting_tree", DirectoryTree).reload()
     

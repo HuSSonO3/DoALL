@@ -5,10 +5,11 @@ from textual.widget import Widget
 from textual.containers import Container, Horizontal
 from textual.binding import Binding
 import sqlite3
-import os
 from datetime import datetime
 
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "todos.db")
+from shared import db_path
+
+DB_PATH = db_path("tabs", "todos", "todos.db")
 
 
 def get_db():

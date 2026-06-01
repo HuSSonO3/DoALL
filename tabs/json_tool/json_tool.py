@@ -128,10 +128,8 @@ class JsonToolWidget(Widget, can_focus=True):
             self.notify("Nothing to copy.", severity="warning")
             return
 
-        out_dir = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-            "file_holders", "json_tool",
-        )
+        from shared import data_root
+        out_dir = os.path.join(data_root(), "file_holders", "json_tool")
         os.makedirs(out_dir, exist_ok=True)
         path = os.path.join(out_dir, "output.txt")
         try:
@@ -147,7 +145,7 @@ class JsonToolWidget(Widget, can_focus=True):
         lines = self._last_output.count("\n") + 1
         size = len(self._last_output)
         self.notify(
-            f"Written to file_holders/json_tool/output.txt ({lines} lines, {size}B).",
+            f"Saved to {path} ({lines} lines, {size}B).",
         )
 
     def action_clear(self) -> None:

@@ -1,7 +1,7 @@
 import sqlite3
-import os
+from shared import db_path
 
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "music.db")
+DB_PATH = db_path("tabs", "music", "music.db")
 
 
 def get_db():

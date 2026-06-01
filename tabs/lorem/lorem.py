@@ -112,16 +112,14 @@ class LoremWidget(Widget, can_focus=True):
             self.notify("Nothing to save. Generate first.", severity="warning")
             return
         import os
-        out_dir = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-            "file_holders", "lorem",
-        )
+        from shared import data_root
+        out_dir = os.path.join(data_root(), "file_holders", "lorem")
         os.makedirs(out_dir, exist_ok=True)
         path = os.path.join(out_dir, "output.txt")
         with open(path, "w") as f:
             f.write(self._last_text)
         lines = self._last_text.count("\n") + 1
-        self.notify(f"Saved {lines} lines to file_holders/lorem/output.txt")
+        self.notify(f"Saved to {path} ({lines} lines).")
 
 
 class LoremTab(TabPane):

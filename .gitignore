@@ -1,8 +1,12 @@
 .venv/
 .env
 __pycache__/
-file_holders/noting/*
+*.pyc
+dist/
+file_holders/
+*.db
 .claude/
 CLAUDE.md
 COLORS.md
 test/
+build/
