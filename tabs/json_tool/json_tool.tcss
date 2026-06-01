@@ -1,0 +1,49 @@
+/* ── Main layout ── */
+#json_container {
+    height: 100%;
+    width: 100%;
+}
+
+/* ── Toolbar ── */
+#json_toolbar {
+    height: 3;
+    align: center middle;
+    padding: 0 1;
+}
+
+#json_toolbar Button {
+    margin: 0 1;
+}
+
+/* ── Panes ── */
+#json_panes {
+    height: 1fr;
+}
+
+#json_input_pane {
+    width: 1fr;
+    border: solid $surface;
+    padding: 0 1 1 1;
+}
+
+#json_output_pane {
+    width: 1fr;
+    border: solid $surface;
+    padding: 0 1 1 1;
+}
+
+#json_label_input, #json_label_output {
+    text-style: bold;
+    color: $accent;
+    height: 1;
+    padding: 0 1;
+    margin-top: 1;
+}
+
+#json_input {
+    height: 1fr;
+}
+
+#json_output {
+    height: 1fr;
+}

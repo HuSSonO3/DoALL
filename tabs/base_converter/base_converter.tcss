@@ -1,0 +1,47 @@
+/* ── Main ── */
+#bc_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+}
+
+/* ── Toolbar ── */
+#bc_toolbar {
+    height: 3;
+    align: center middle;
+}
+
+#bc_toolbar Label {
+    margin-right: 1;
+}
+
+#bc_source {
+    width: 20;
+}
+
+/* ── Input ── */
+#bc_input {
+    margin: 1 0;
+}
+
+/* ── Error ── */
+#bc_error {
+    height: 1;
+    margin-bottom: 1;
+}
+
+/* ── Results ── */
+#bc_results {
+    height: auto;
+    padding: 1;
+    border: solid $surface;
+}
+
+#bc_results Static {
+    height: 1;
+    margin: 1 0;
+}
+
+#bc_line_ascii {
+    margin-top: 2;
+}

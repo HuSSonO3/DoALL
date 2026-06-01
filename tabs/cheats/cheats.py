@@ -5,7 +5,6 @@ from textual.widget import Widget
 from textual.containers import Container, Horizontal, Vertical
 from textual.binding import Binding
 from textual.markup import escape
-import os
 
 from .db import get_db, init_db
 
@@ -511,8 +510,6 @@ class CheatSheetWidget(Widget, can_focus=True):
 
 class CheatSheetTab(TabPane):
     """TabPane wrapper for the Cheat Sheet module."""
-
-    DEFAULT_CSS = open(os.path.join(os.path.dirname(__file__), "cheats.tcss")).read()
 
     def compose(self) -> ComposeResult:
         yield CheatSheetWidget()

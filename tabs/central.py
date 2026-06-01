@@ -5,3 +5,7 @@ from .games.games_tab import GamesTab
 from .todos.todos import TodoTab
 from .cheats.cheats import CheatSheetTab
 from .timezones.timezones import TimeZoneTab
+from .json_tool.json_tool import JsonToolTab
+from .color_picker.color_picker import ColorPickerTab
+from .base_converter.base_converter import BaseConverterTab
+from .lorem.lorem import LoremTab

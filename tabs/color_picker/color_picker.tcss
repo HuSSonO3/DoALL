@@ -1,0 +1,55 @@
+/* ── Main ── */
+#cp_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+}
+
+/* ── Pointer + slider rows ── */
+.cp_pointer_row, .cp_slider_row {
+    height: 1;
+}
+
+.cp_pointer_label {
+    width: 1fr;
+    height: 1;
+    content-align: center middle;
+}
+
+.cp_slider_cell {
+    width: 1fr;
+    height: 1;
+}
+
+/* ── Preview ── */
+#cp_preview_row {
+    height: 6;
+    margin: 1 0;
+}
+
+#cp_preview_block {
+    width: 20;
+    height: 100%;
+    margin-right: 2;
+}
+
+#cp_preview_info {
+    width: 1fr;
+    height: 100%;
+    content-align: left middle;
+}
+
+/* ── Bottom bar ── */
+#cp_bottom_bar {
+    height: 3;
+    align: center middle;
+}
+
+#cp_bottom_bar Label {
+    margin-right: 1;
+}
+
+#cp_hex_input {
+    width: 16;
+    margin-right: 1;
+}

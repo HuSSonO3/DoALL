@@ -15,3 +15,9 @@ TabPane {
 Screen {
     layers: base floating;
 }
+
+/* Make the '+' tab Select dropdown taller — show all options */
+SelectOverlay {
+    max-height: 30;
+    height: auto;
+}

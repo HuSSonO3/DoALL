@@ -5,7 +5,6 @@ from textual.containers import Container, Horizontal, Vertical
 from textual.binding import Binding
 from zoneinfo import ZoneInfo
 from datetime import datetime, timedelta
-import os
 
 from .data import COUNTRIES, REFERENCE_ZONES, OFFSETS
 
@@ -330,8 +329,6 @@ class TimeZoneWidget(Widget, can_focus=True):
 
 class TimeZoneTab(TabPane):
     """TabPane wrapper for the Time Zone Converter module."""
-
-    DEFAULT_CSS = open(os.path.join(os.path.dirname(__file__), "timezones.tcss")).read()
 
     def compose(self) -> ComposeResult:
         yield TimeZoneWidget()

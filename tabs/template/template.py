@@ -2,11 +2,8 @@ from textual.app import ComposeResult
 from textual.screen import Screen
 from textual.widgets import Footer, Placeholder, TabPane, Label
 from textual.containers import Container, Horizontal, VerticalScroll
-import os
 
 class TemplateTab(TabPane):
-        
-    DEFAULT_CSS = open(os.path.join(os.path.dirname(__file__), "template.tcss")).read()
 
     def compose(self) -> ComposeResult:
             

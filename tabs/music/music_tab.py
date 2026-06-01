@@ -48,7 +48,7 @@ class MusicTab(TabPane):
         self._albums_view_widget = None
 
     def on_mount(self):
-        from .db import init_db
+        from .db import init_db, get_setting
         init_db()
 
         self._tracks_view = self.query_one("#music_tracks_view", TracksView)
@@ -57,6 +57,12 @@ class MusicTab(TabPane):
         self._queue_panel = self.query_one("#music_queue_panel", QueuePanel)
 
         self._tracks_view.display = False
+
+        # Restore saved library path and auto-scan
+        saved = get_setting("library_path")
+        if saved:
+            self.query_one("#music_path_input", Input).value = saved
+            self._scan_library()
 
     def on_button_pressed(self, event: Button.Pressed):
         if event.button.id == "music_scan_button":
@@ -92,6 +98,8 @@ class MusicTab(TabPane):
         if result["errors"]:
             status.update(f"[bold red]{result['errors'][0]}[/]")
         else:
+            from .db import save_setting
+            save_setting("library_path", path)
             msg = f"Found {len(self._tracks)} tracks in {len(self._albums)} albums."
             if result["skipped_count"]:
                 msg += f" Skipped {result['skipped_count']} files."
