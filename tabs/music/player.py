@@ -270,6 +270,14 @@ class PlaybackEngine:
         if self._current_index < 0 or self._current_index >= len(self._queue):
             return
         self._elapsed = 0.0
+
+        # Probe actual duration if missing or zero
+        track = self._queue[self._current_index]
+        if track.get("duration", 0) <= 0:
+            real = self._probe_duration(track["file_path"])
+            if real > 0:
+                track["duration"] = real
+
         self._start_process(seek=0)
         self._state = "playing"
 
@@ -281,6 +289,21 @@ class PlaybackEngine:
 
         self.widget.post_message(TrackChanged(track, self._current_index))
         self.widget.post_message(PlaybackStateChanged("playing"))
+
+    @staticmethod
+    def _probe_duration(file_path):
+        """Get actual duration in seconds via ffprobe. Returns 0 on failure."""
+        if not shutil.which("ffprobe"):
+            return 0
+        try:
+            result = subprocess.run(
+                ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
+                 "-of", "csv=p=0", file_path],
+                capture_output=True, text=True, timeout=10,
+            )
+            return float(result.stdout.strip())
+        except Exception:
+            return 0
 
     def _start_process(self, seek=0):
         track = self.current_track
@@ -373,13 +396,15 @@ class PlaybackEngine:
             self._elapsed += 0.5
             track = self.current_track
             total = track.get("duration", 0) if track else 0
-            if total == 0:
-                total = 180
-            if self._elapsed >= total:
-                self._elapsed = 0.0
-                self._on_track_finished()
-            else:
-                self.widget.post_message(TrackProgress(self._elapsed, total))
+            if total <= 0:
+                total = 0  # unknown — bar stays at 0; won't skip
+            elif self._elapsed >= total:
+                # Clamp at total; only the subprocess exit triggers next()
+                self._elapsed = total
+                self._stop_progress_timer()
+            display_total = max(total, 1)
+            display_elapsed = min(self._elapsed, display_total)
+            self.widget.post_message(TrackProgress(display_elapsed, display_total))
 
     def _on_track_finished(self):
         self._stop_progress_timer()

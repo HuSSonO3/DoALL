@@ -71,14 +71,19 @@ class PlaybackControls(Widget):
 
     def show_progress(self, elapsed, total):
         bar = self.query_one("#music_seek_bar", ProgressBar)
-        total = max(total, 1)
-        bar.update(total=total, progress=elapsed)
+        if total <= 0:
+            # Unknown duration — fill the bar as elapsed grows, up to a
+            # sliding window so it always shows some movement.
+            window = max(elapsed + 1, 1)
+            bar.update(total=window, progress=elapsed % window)
+            total_str = "--:--"
+        else:
+            bar.update(total=total, progress=min(elapsed, total))
+            total_str = f"{int(total // 60)}:{int(total % 60):02d}"
         self.query_one("#music_time_elapsed", Label).update(
             f"{int(elapsed // 60)}:{int(elapsed % 60):02d}"
         )
-        self.query_one("#music_time_total", Label).update(
-            f"{int(total // 60)}:{int(total % 60):02d}"
-        )
+        self.query_one("#music_time_total", Label).update(total_str)
 
     def _update_button_states(self):
         p = self._playback
