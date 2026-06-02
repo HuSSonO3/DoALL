@@ -1,0 +1,259 @@
+/* ═══════════════════════════════════════════════════════════════
+   Budget Tracker — CSS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Main layout ── */
+#budget_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+/* ── Month navigation ── */
+#budget_month_nav {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#budget_month_label {
+    width: 1fr;
+    text-align: center;
+    text-style: bold;
+    color: $accent;
+}
+
+#budget_prev_btn, #budget_next_btn {
+    width: 12;
+    color: #1a1a1a;
+    background: #c49b6c;
+}
+
+/* ── Set budget row ── */
+#budget_total_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#budget_set_total_btn { margin-right: 1; }
+
+/* ── Summary cards ── */
+#budget_summary_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#budget_card_total, #budget_card_spent, #budget_card_remaining {
+    width: 1fr;
+    height: auto;
+    padding: 1 2;
+    margin: 0 1;
+    border: round $surface;
+    text-align: center;
+}
+
+#budget_card_total_label, #budget_card_spent_label, #budget_card_remaining_label {
+    color: $text-muted;
+    text-style: dim;
+    width: 100%;
+    text-align: center;
+}
+
+#budget_card_total_value, #budget_card_spent_value, #budget_card_remaining_value {
+    width: 100%;
+    text-align: center;
+    text-style: bold;
+    color: $accent;
+}
+
+#budget_card_remaining_value.negative {
+    color: $error;
+}
+
+/* ── Input row ── */
+#budget_input_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#budget_input_row > Input, #budget_input_row > Select {
+    margin: 0 1;
+}
+
+#budget_date { width: 18; }
+#budget_amount { width: 16; }
+#budget_category_select { width: 24; }
+#budget_note { width: 24; }
+
+#budget_add_btn { min-width: 10; }
+
+/* ── Category table ── */
+#budget_table_heading {
+    margin-top: 0;
+    text-style: bold;
+    color: $accent;
+}
+
+#budget_table {
+    height: 1fr;
+    border: round $accent;
+}
+
+/* ── Actions ── */
+#budget_actions_row {
+    height: auto;
+    align: center middle;
+    margin-top: 1;
+}
+
+#budget_actions_row > Button {
+    margin: 0 1;
+}
+
+/* ── Modal screens ── */
+BudgetSetTotalModal, BudgetCategoryFormModal, BudgetDeleteConfirmModal, BudgetDeleteCategoryConfirmModal, BudgetCategoryTransactionsModal {
+    align: center middle;
+}
+
+/* ── Set total budget modal ── */
+#budget_total_container {
+    width: 40%;
+    height: auto;
+    max-height: 18;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+}
+
+#budget_total_title {
+    text-align: center;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#budget_total_info {
+    color: $text-muted;
+    margin-bottom: 1;
+    width: 100%;
+}
+
+#budget_total_input {
+    margin-bottom: 1;
+}
+
+#budget_total_buttons {
+    width: 100%;
+    align: center middle;
+}
+
+#budget_total_buttons > Button {
+    margin: 0 1;
+    width: 1fr;
+}
+
+/* ── Category form modal ── */
+#budget_cat_form_container {
+    width: 55%;
+    height: 30  ;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+}
+
+#budget_cat_form_container > Label {
+    padding: 1 0 1 0;
+}
+
+
+#budget_cat_form_title {
+    text-align: center;
+    text-style: bold;
+}
+
+#budget_cat_form_info {
+    color: $text-muted;
+    width: 100%;
+    text-align: center;
+}
+
+
+#budget_cat_form_buttons {
+    width: 100%;
+    align: center middle;
+    margin-top: 0;
+}
+
+#budget_cat_form_buttons > Button {
+    margin: 0 1;
+}
+
+/* ── Delete confirm modals ── */
+#budget_del_container, #budget_cat_del_container {
+    width: 50%;
+    height: auto;
+    max-height: 12;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+}
+
+#budget_del_label, #budget_cat_del_label {
+    width: 100%;
+    text-align: center;
+}
+
+#budget_del_buttons, #budget_cat_del_buttons {
+    width: 100%;
+    align: center middle;
+}
+
+/* ── Category transactions modal ── */
+#budget_cat_txn_container {
+    width: 65%;
+    height: auto;
+    max-height: 30;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+}
+
+#budget_cat_txn_title {
+    text-align: center;
+    text-style: bold;
+    color: $accent;
+    margin-bottom: 1;
+}
+
+#budget_cat_txn_table {
+    height: 14;
+    border: round $accent;
+    margin-bottom: 1;
+}
+
+#budget_cat_txn_total {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#budget_cat_txn_buttons {
+    width: 100%;
+    align: center middle;
+}
+
+#budget_cat_txn_buttons > Button {
+    margin: 0 1;
+}
+
+/* ── Shared small label ── */
+#budget_small_label {
+    text-style: dim;
+    color: $text 40%;
+    width: 100%;
+    text-align: center;
+}
+

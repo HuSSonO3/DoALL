@@ -9,3 +9,5 @@ from .json_tool.json_tool import JsonToolTab
 from .color_picker.color_picker import ColorPickerTab
 from .base_converter.base_converter import BaseConverterTab
 from .lorem.lorem import LoremTab
+from .money.money import MoneyTab
+from .budget.budget import BudgetTab

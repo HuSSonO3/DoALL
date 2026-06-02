@@ -24,3 +24,7 @@ jobs:
         with:
           name: doall-${{ matrix.os }}
           path: dist/
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*

@@ -1,11 +1,11 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Label, Tabs, TabbedContent, TabPane, Select
-from tabs.central import NoteTakingTab, ClockTab, MusicTab, GamesTab, TodoTab, CheatSheetTab, TimeZoneTab, JsonToolTab, ColorPickerTab, BaseConverterTab, LoremTab
+from tabs.central import NoteTakingTab, ClockTab, MusicTab, GamesTab, TodoTab, CheatSheetTab, TimeZoneTab, JsonToolTab, ColorPickerTab, BaseConverterTab, LoremTab, MoneyTab, BudgetTab
 
 class DoAllApp(App):
     """Demonstrates the Tabs widget."""
 
-    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss", "./tabs/games/games.tcss", "./tabs/todos/todos.tcss", "./tabs/cheats/cheats.tcss", "./tabs/timezones/timezones.tcss", "./tabs/json_tool/json_tool.tcss", "./tabs/color_picker/color_picker.tcss", "./tabs/base_converter/base_converter.tcss", "./tabs/lorem/lorem.tcss"]
+    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss", "./tabs/games/games.tcss", "./tabs/todos/todos.tcss", "./tabs/cheats/cheats.tcss", "./tabs/timezones/timezones.tcss", "./tabs/json_tool/json_tool.tcss", "./tabs/color_picker/color_picker.tcss", "./tabs/base_converter/base_converter.tcss", "./tabs/lorem/lorem.tcss", "./tabs/money/money.tcss", "./tabs/budget/budget.tcss"]
 
     TAB_OPTIONS = [
         ("Note Taker", NoteTakingTab("Note Taker", id="note_taker")),
@@ -19,6 +19,8 @@ class DoAllApp(App):
         ("Color Picker", ColorPickerTab("Color Picker", id="color_picker")),
         ("Base Converter", BaseConverterTab("Base Converter", id="base_converter")),
         ("Lorem Ipsum", LoremTab("Lorem Ipsum", id="lorem")),
+        ("Money Tracker", MoneyTab("Money Tracker", id="money")),
+        ("Budget Tracker", BudgetTab("Budget Tracker", id="budget")),
     ]
 
     OPEN_TABS = []
@@ -46,15 +48,19 @@ class DoAllApp(App):
             return
 
         content = self.query_one(TabbedContent)
-        if not event.value in self.OPEN_TABS:
-            await content.add_pane(event.value)
-            self.OPEN_TABS.append(event.value)
+        tab_pane = event.value
 
-        self.query_one(TabbedContent).active = event.value.id
-        self.query_one("#tab-select", Select).clear()
+        if tab_pane not in self.OPEN_TABS:
+            await content.add_pane(tab_pane)
+            self.OPEN_TABS.append(tab_pane)
+
+        # Defer the switch so the Select dropdown has fully closed
+        self.call_after_refresh(lambda: setattr(content, "active", tab_pane.id))
 
     def on_tabbed_content_tab_activated(self, event: TabbedContent.TabActivated) -> None:
-        """Handle TabActivated message sent by Tabs."""
+        """Reset the + tab Select whenever it becomes active."""
+        if event.pane.id == "add":
+            self.query_one("#tab-select", Select).clear()
 
     async def action_exit(self) -> None:
         tabbed_content = self.query_one(TabbedContent)
