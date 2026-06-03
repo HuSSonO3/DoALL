@@ -162,7 +162,7 @@ class MoneyManageModal(ModalScreen):
         for acct in get_accounts():
             table.add_row(
                 acct["name"], acct["type"],
-                f"${acct['balance']:,.2f}",
+                f"RM {acct['balance']:,.2f}",
                 key=str(acct["id"])
             )
 

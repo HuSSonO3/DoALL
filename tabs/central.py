@@ -11,3 +11,5 @@ from .base_converter.base_converter import BaseConverterTab
 from .lorem.lorem import LoremTab
 from .money.money import MoneyTab
 from .budget.budget import BudgetTab
+from .random_picker.random_picker import RandomPickerTab
+from .unit_converter.unit_converter import UnitConverterTab

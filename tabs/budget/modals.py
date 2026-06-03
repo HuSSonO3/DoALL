@@ -28,8 +28,8 @@ class BudgetSetTotalModal(ModalScreen):
         with Container(id="budget_total_container"):
             yield Label("[bold]Set Monthly Budget[/]", id="budget_total_title")
             yield Label(
-                f"Current budget: ${self._current:,.2f}\n"
-                f"Allocated to categories: ${get_category_sum(self._budget_id):,.2f}",
+                f"Current budget: RM{self._current:,.2f}\n"
+                f"Allocated to categories: RM{get_category_sum(self._budget_id):,.2f}",
                 id="budget_total_info"
             )
             yield Input(
@@ -85,7 +85,7 @@ class BudgetCategoryFormModal(ModalScreen):
 
         with Container(id="budget_cat_form_container"):
             yield Label(
-                f"[bold]Add Budget Category[/]  [dim](available: ${available:,.2f})[/]",
+                f"[bold]Add Budget Category[/]  [dim](available: RM{available:,.2f})[/]",
                 id="budget_cat_form_title"
             )
             yield Label("Category Name")
@@ -132,8 +132,8 @@ class BudgetCategoryFormModal(ModalScreen):
             available = total_budget - reserved
             if amount > available:
                 self.notify(
-                    f"Not enough budget. ${reserved:,.2f} already reserved "
-                    f"from ${total_budget:,.2f} (only ${available:,.2f} available).",
+                    f"Not enough budget. RM{reserved:,.2f} already reserved "
+                    f"from RM{total_budget:,.2f} (only RM{available:,.2f} available).",
                     severity="error"
                 )
                 return
@@ -262,7 +262,7 @@ class BudgetCategoryTransactionsModal(ModalScreen):
         for t in txns:
             table.add_row(
                 t["date"],
-                f"${t['amount']:,.2f}",
+                f"RM{t['amount']:,.2f}",
                 t["note"] or "",
                 key=str(t["id"]),
             )
@@ -270,7 +270,7 @@ class BudgetCategoryTransactionsModal(ModalScreen):
 
         count = len(txns)
         self.query_one("#budget_cat_txn_total", Label).update(
-            f"[bold]Total: ${total:,.2f}[/]  ({count} transaction{'s' if count != 1 else ''})"
+            f"[bold]Total: RM{total:,.2f}[/]  ({count} transaction{'s' if count != 1 else ''})"
         )
 
     def action_delete_txn(self):
@@ -284,7 +284,7 @@ class BudgetCategoryTransactionsModal(ModalScreen):
             info = ""
             for t in txns:
                 if t["id"] == txn_id:
-                    info = f"${t['amount']:,.2f} — {t['category_name']} ({t['date']})"
+                    info = f"RM{t['amount']:,.2f} — {t['category_name']} ({t['date']})"
                     if t["note"]:
                         info += f"\n[dim]{t['note']}[/]"
                     break

@@ -58,13 +58,13 @@ class BudgetWidget(Widget, can_focus=True):
             with Horizontal(id="budget_summary_row"):
                 with Vertical(id="budget_card_total"):
                     yield Label("Budget", id="budget_card_total_label")
-                    yield Label("$0.00", id="budget_card_total_value")
+                    yield Label("RM 0.00", id="budget_card_total_value")
                 with Vertical(id="budget_card_spent"):
                     yield Label("Spent", id="budget_card_spent_label")
-                    yield Label("$0.00", id="budget_card_spent_value")
+                    yield Label("RM 0.00", id="budget_card_spent_value")
                 with Vertical(id="budget_card_remaining"):
                     yield Label("Remaining", id="budget_card_remaining_label")
-                    yield Label("$0.00", id="budget_card_remaining_value")
+                    yield Label("RM 0.00", id="budget_card_remaining_value")
 
             # ── Transaction input ──
             with Horizontal(id="budget_input_row"):
@@ -195,8 +195,8 @@ class BudgetWidget(Widget, can_focus=True):
                     if s["spent"] + amount > cat_budget:
                         over = (s["spent"] + amount) - cat_budget
                         self.notify(
-                            f"Over budget! ${s['spent']:,.2f} already spent, "
-                            f"${amount:,.2f} would exceed by ${over:,.2f}.",
+                            f"Over budget! RM {s['spent']:,.2f} already spent, "
+                            f"RM {amount:,.2f} would exceed by RM {over:,.2f}.",
                             severity="error"
                         )
                         return
@@ -306,7 +306,7 @@ class BudgetWidget(Widget, can_focus=True):
                 return
 
             latest = txns[0]
-            info = f"${latest['amount']:,.2f} — {latest['category_name']} ({latest['date']})\n"
+            info = f"RM {latest['amount']:,.2f} — {latest['category_name']} ({latest['date']})\n"
             if len(txns) > 1:
                 info += f"[dim]({len(txns)} total transactions in this category)[/]"
             self.app.push_screen(
@@ -340,11 +340,11 @@ class BudgetWidget(Widget, can_focus=True):
 
     def _refresh_summary(self):
         s = get_total_summary(self._budget_id)
-        self.query_one("#budget_card_total_value", Label).update(f"${s['total_budget']:,.2f}")
-        self.query_one("#budget_card_spent_value", Label).update(f"${s['total_spent']:,.2f}")
+        self.query_one("#budget_card_total_value", Label).update(f"RM {s['total_budget']:,.2f}")
+        self.query_one("#budget_card_spent_value", Label).update(f"RM {s['total_spent']:,.2f}")
 
         remaining_label = self.query_one("#budget_card_remaining_value", Label)
-        remaining_label.update(f"${s['total_remaining']:,.2f}")
+        remaining_label.update(f"RM {s['total_remaining']:,.2f}")
         if s["total_remaining"] < 0:
             remaining_label.add_class("negative")
         else:
@@ -360,14 +360,14 @@ class BudgetWidget(Widget, can_focus=True):
 
             if cat["budget_impact"] == "decrease" and cat["budget_amount"] > 0:
                 pct = int((cat["spent"] / cat["budget_amount"]) * 100)
-                progress = f"${cat['spent']:,.2f} / ${cat['budget_amount']:,.2f} ({pct}%)"
-                budget_str = f"${cat['budget_amount']:,.2f}"
-                spent_str = f"${cat['spent']:,.2f}"
-                remaining_str = f"${cat['remaining']:,.2f}"
+                progress = f"RM {cat['spent']:,.2f} / RM {cat['budget_amount']:,.2f} ({pct}%)"
+                budget_str = f"RM {cat['budget_amount']:,.2f}"
+                spent_str = f"RM {cat['spent']:,.2f}"
+                remaining_str = f"RM {cat['remaining']:,.2f}"
             else:
-                progress = f"${cat['spent']:,.2f} tracked"
+                progress = f"RM {cat['spent']:,.2f} tracked"
                 budget_str = "—"
-                spent_str = f"${cat['spent']:,.2f}"
+                spent_str = f"RM {cat['spent']:,.2f}"
                 remaining_str = "—"
 
             table.add_row(

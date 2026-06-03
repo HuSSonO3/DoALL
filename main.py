@@ -1,11 +1,11 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Label, Tabs, TabbedContent, TabPane, Select
-from tabs.central import NoteTakingTab, ClockTab, MusicTab, GamesTab, TodoTab, CheatSheetTab, TimeZoneTab, JsonToolTab, ColorPickerTab, BaseConverterTab, LoremTab, MoneyTab, BudgetTab
+from tabs.central import NoteTakingTab, ClockTab, MusicTab, GamesTab, TodoTab, CheatSheetTab, TimeZoneTab, JsonToolTab, ColorPickerTab, BaseConverterTab, LoremTab, MoneyTab, BudgetTab, RandomPickerTab, UnitConverterTab
 
 class DoAllApp(App):
     """Demonstrates the Tabs widget."""
 
-    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss", "./tabs/games/games.tcss", "./tabs/todos/todos.tcss", "./tabs/cheats/cheats.tcss", "./tabs/timezones/timezones.tcss", "./tabs/json_tool/json_tool.tcss", "./tabs/color_picker/color_picker.tcss", "./tabs/base_converter/base_converter.tcss", "./tabs/lorem/lorem.tcss", "./tabs/money/money.tcss", "./tabs/budget/budget.tcss"]
+    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss", "./tabs/games/games.tcss", "./tabs/todos/todos.tcss", "./tabs/cheats/cheats.tcss", "./tabs/timezones/timezones.tcss", "./tabs/json_tool/json_tool.tcss", "./tabs/color_picker/color_picker.tcss", "./tabs/base_converter/base_converter.tcss", "./tabs/lorem/lorem.tcss", "./tabs/money/money.tcss", "./tabs/budget/budget.tcss", "./tabs/random_picker/random_picker.tcss", "./tabs/unit_converter/unit_converter.tcss"]
 
     TAB_OPTIONS = [
         ("Note Taker", NoteTakingTab("Note Taker", id="note_taker")),
@@ -21,6 +21,8 @@ class DoAllApp(App):
         ("Lorem Ipsum", LoremTab("Lorem Ipsum", id="lorem")),
         ("Money Tracker", MoneyTab("Money Tracker", id="money")),
         ("Budget Tracker", BudgetTab("Budget Tracker", id="budget")),
+        ("Random Picker", RandomPickerTab("Random Picker", id="random_picker")),
+        ("Unit Converter", UnitConverterTab("Unit Converter", id="unit_converter")),
     ]
 
     OPEN_TABS = []

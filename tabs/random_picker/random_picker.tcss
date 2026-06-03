@@ -1,0 +1,43 @@
+#rp_container {
+    height: 100%;
+    width: 100%;
+    align: center middle;
+    layout: vertical;
+    padding: 2;
+}
+
+#rp_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2;
+}
+
+#rp_input_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 2;
+}
+
+#rp_from { width: 14; margin-right: 1; }
+#rp_to { width: 14; margin-left: 1; }
+
+#rp_to_label {
+    height: 100%;
+    text-style: dim;
+    color: $text-muted;
+    content-align: center middle;
+}
+
+#rp_roll_btn {
+    margin-left: 2;
+    background: #c49b6c;
+    color: #1a1a1a;
+}
+
+#rp_result {
+    width: 100%;
+    height: 6;
+    text-align: center;
+    content-align: center middle;
+    color: $accent;
+}

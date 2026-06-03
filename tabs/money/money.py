@@ -33,13 +33,13 @@ class MoneyWidget(Widget, can_focus=True):
             with Horizontal(id="money_summary_row"):
                 with Vertical(id="money_card_balance"):
                     yield Label("Total Balance", id="money_card_balance_label")
-                    yield Label("$0.00", id="money_card_balance_value")
+                    yield Label("RM 0.00", id="money_card_balance_value")
                 with Vertical(id="money_card_income"):
                     yield Label("Income", id="money_card_income_label")
-                    yield Label("$0.00", id="money_card_income_value")
+                    yield Label("RM 0.00", id="money_card_income_value")
                 with Vertical(id="money_card_expenses"):
                     yield Label("Expenses", id="money_card_expenses_label")
-                    yield Label("$0.00", id="money_card_expenses_value")
+                    yield Label("RM 0.00", id="money_card_expenses_value")
 
             with Horizontal(id="money_input_row"):
                 yield Input(placeholder="YYYY-MM-DD", id="money_date")
@@ -170,7 +170,7 @@ class MoneyWidget(Widget, can_focus=True):
             info = ""
             for t in txn:
                 if t["id"] == txn_id:
-                    info = f"Delete transaction?\n\n[dim]${t['amount']:,.2f} — {t['category_name']} ({t['date']})[/]"
+                    info = f"Delete transaction?\n\n[dim]RM {t['amount']:,.2f} — {t['category_name']} ({t['date']})[/]"
                     break
             self.app.push_screen(
                 MoneyDeleteConfirmModal(info),
@@ -212,7 +212,7 @@ class MoneyWidget(Widget, can_focus=True):
                 txn["type"].capitalize(),
                 txn["category_name"],
                 txn["account_name"],
-                f"${txn['amount']:,.2f}",
+                f"RM {txn['amount']:,.2f}",
                 txn["note"][:30],
                 key=str(txn["id"]),
             )
@@ -220,13 +220,13 @@ class MoneyWidget(Widget, can_focus=True):
     def _refresh_summary(self):
         s = get_summary(month=self._current_month, account_id=self._current_account)
         bal_label = self.query_one("#money_card_balance_value", Label)
-        bal_label.update(f"${s['net_balance']:,.2f}")
+        bal_label.update(f"RM {s['net_balance']:,.2f}")
         if s["net_balance"] < 0:
             bal_label.add_class("negative")
         else:
             bal_label.remove_class("negative")
-        self.query_one("#money_card_income_value", Label).update(f"${s['total_income']:,.2f}")
-        self.query_one("#money_card_expenses_value", Label).update(f"${s['total_expenses']:,.2f}")
+        self.query_one("#money_card_income_value", Label).update(f"RM {s['total_income']:,.2f}")
+        self.query_one("#money_card_expenses_value", Label).update(f"RM {s['total_expenses']:,.2f}")
 
     def _refresh_category_breakdown(self):
         table = self.query_one("#money_cat_breakdown", DataTable)
@@ -238,7 +238,7 @@ class MoneyWidget(Widget, can_focus=True):
                 pct = (cat["total"] / total) * 100
             else:
                 pct = 0
-            table.add_row(cat["name"], f"${cat['total']:,.2f}", f"{pct:.1f}%")
+            table.add_row(cat["name"], f"RM {cat['total']:,.2f}", f"{pct:.1f}%")
 
     def _refresh_account_select(self):
         sel = self.query_one("#money_account", Select)
