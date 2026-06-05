@@ -1,0 +1,42 @@
+#csv_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#csv_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#csv_controls {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#csv_delimiter {
+    width: 24;
+    margin-right: 2;
+}
+
+#csv_stats {
+    width: 1fr;
+}
+
+#csv_input {
+    height: 8;
+    margin-bottom: 1;
+}
+
+#csv_status {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+#csv_table {
+    height: 1fr;
+    border: round $accent;
+}

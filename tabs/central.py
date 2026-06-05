@@ -13,3 +13,6 @@ from .money.money import MoneyTab
 from .budget.budget import BudgetTab
 from .random_picker.random_picker import RandomPickerTab
 from .unit_converter.unit_converter import UnitConverterTab
+from .regex_tester.regex_tester import RegexTesterTab
+from .csv_viewer.csv_viewer import CsvViewerTab
+from .subnet_calc.subnet_calc import SubnetCalcTab
