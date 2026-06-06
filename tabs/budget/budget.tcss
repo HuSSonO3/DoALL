@@ -115,7 +115,7 @@
 }
 
 /* ── Modal screens ── */
-BudgetSetTotalModal, BudgetCategoryFormModal, BudgetDeleteConfirmModal, BudgetDeleteCategoryConfirmModal, BudgetCategoryTransactionsModal {
+BudgetSetTotalModal, BudgetCategoryFormModal, BudgetCategoryEditModal, BudgetDeleteConfirmModal, BudgetDeleteCategoryConfirmModal, BudgetCategoryTransactionsModal {
     align: center middle;
 }
 
@@ -137,7 +137,7 @@ BudgetSetTotalModal, BudgetCategoryFormModal, BudgetDeleteConfirmModal, BudgetDe
 
 #budget_total_info {
     color: $text-muted;
-    margin-bottom: 1;
+    margin-bottom: 0;
     width: 100%;
 }
 
@@ -158,20 +158,22 @@ BudgetSetTotalModal, BudgetCategoryFormModal, BudgetDeleteConfirmModal, BudgetDe
 /* ── Category form modal ── */
 #budget_cat_form_container {
     width: 55%;
-    height: 30  ;
+    height: 25;
     background: $surface;
     padding: 1 2;
     border: round $primary;
 }
 
 #budget_cat_form_container > Label {
-    padding: 1 0 1 0;
+    padding: 0;
+    margin-top: 1;
 }
 
 
 #budget_cat_form_title {
     text-align: center;
     text-style: bold;
+    margin-top: 0;
 }
 
 #budget_cat_form_info {

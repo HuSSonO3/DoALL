@@ -8,12 +8,13 @@ from textual.binding import Binding
 
 from .db import (
     init_db, get_or_create_budget, update_total_budget,
-    add_budget_category, get_budget_categories, delete_budget_category,
+    add_budget_category, update_budget_category, get_budget_categories,
+    delete_budget_category,
     add_budget_transaction, get_budget_transactions, delete_budget_transaction,
     get_category_summary, get_total_summary,
 )
 from .modals import (
-    BudgetSetTotalModal, BudgetCategoryFormModal,
+    BudgetSetTotalModal, BudgetCategoryFormModal, BudgetCategoryEditModal,
     BudgetDeleteConfirmModal, BudgetDeleteCategoryConfirmModal,
     BudgetCategoryTransactionsModal,
 )
@@ -81,6 +82,7 @@ class BudgetWidget(Widget, can_focus=True):
             # ── Actions ──
             with Horizontal(id="budget_actions_row"):
                 yield Button("View Transactions", variant="primary", id="budget_view_txn_btn")
+                yield Button("Edit Category", id="budget_edit_cat_btn")
                 yield Button("Delete Category", variant="error", id="budget_delete_category_btn")
 
     def on_mount(self):
@@ -133,6 +135,8 @@ class BudgetWidget(Widget, can_focus=True):
             self.action_add_category()
         elif pid == "budget_view_txn_btn":
             self.action_view_category_transactions()
+        elif pid == "budget_edit_cat_btn":
+            self.action_edit_category()
         elif pid == "budget_delete_category_btn":
             self.action_delete_category()
         elif pid == "budget_prev_btn":
@@ -235,6 +239,76 @@ class BudgetWidget(Widget, can_focus=True):
         if data is not None:
             add_budget_category(self._budget_id, data["name"], data["amount"], data["impact"])
             self._refresh_all()
+
+    def action_edit_category(self):
+        if self._budget_id is None:
+            return
+        table = self.query_one("#budget_table", DataTable)
+        if table.row_count == 0:
+            return
+        try:
+            row_key = table.ordered_rows[table.cursor_row].key.value
+            cat_id = int(row_key)
+            cats = get_budget_categories(self._budget_id)
+            cat = None
+            for c in cats:
+                if c["id"] == cat_id:
+                    cat = c
+                    break
+            if cat:
+                # Get spent for this category
+                summary = get_category_summary(self._budget_id)
+                spent = 0.0
+                for s in summary:
+                    if s["id"] == cat_id:
+                        spent = s["spent"]
+                        break
+                self.app.push_screen(
+                    BudgetCategoryEditModal(self._budget_id, dict(cat), spent),
+                    lambda result: self._on_category_edited(cat_id, result)
+                )
+        except (IndexError, ValueError):
+            pass
+
+    def _on_category_edited(self, cat_id, result):
+        if result is None:
+            return
+        cats = get_budget_categories(self._budget_id)
+        cat = None
+        for c in cats:
+            if c["id"] == cat_id:
+                cat = c
+                break
+        if not cat:
+            return
+
+        new_name = result["name"]
+        new_impact = result["impact"]
+        old_impact = cat["budget_impact"]
+
+        # Use budget_amount if set, otherwise spent (for increase/stagnant which have 0 budget)
+        amount = cat["budget_amount"]
+        if amount <= 0:
+            amount = self._get_category_spent(cat_id)
+
+        # Update the category
+        update_budget_category(cat_id, self._budget_id, new_name, cat["budget_amount"], new_impact)
+
+        # Recalculate total budget: only "increase" changes the total
+        new_total = self._total_budget
+        if old_impact == "increase":
+            new_total -= amount
+        if new_impact == "increase":
+            new_total += amount
+
+        update_total_budget(self._budget_id, new_total)
+        self._refresh_all()
+
+    def _get_category_spent(self, cat_id):
+        for s in get_category_summary(self._budget_id):
+            if s["id"] == cat_id:
+                return s["spent"]
+        return 0.0
 
     def action_delete_category(self):
         if self._budget_id is None:

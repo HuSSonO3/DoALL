@@ -16,3 +16,4 @@ from .unit_converter.unit_converter import UnitConverterTab
 from .regex_tester.regex_tester import RegexTesterTab
 from .csv_viewer.csv_viewer import CsvViewerTab
 from .subnet_calc.subnet_calc import SubnetCalcTab
+from .job_tracker.job_tracker import JobTrackerTab

@@ -155,6 +155,70 @@ class BudgetCategoryFormModal(ModalScreen):
 
 
 # ═══════════════════════════════════════════════════════════════
+# Edit Category Modal
+# ═══════════════════════════════════════════════════════════════
+
+class BudgetCategoryEditModal(ModalScreen):
+    """Change a budget category's name, amount, and impact type."""
+
+    IMPACT_OPTIONS = [
+        ("Decrease — allocate from total budget", "decrease"),
+        ("Increase — adds to total budget", "increase"),
+        ("Stagnant — tracking only", "stagnant"),
+    ]
+
+    def __init__(self, budget_id: int, category: dict, spent: float):
+        super().__init__()
+        self._budget_id = budget_id
+        self._cat = category  # id, name, budget_amount, budget_impact
+        self._spent = spent
+
+    def compose(self) -> ComposeResult:
+        has_amount = self._cat["budget_amount"] > 0
+        info_parts = []
+        if has_amount:
+            info_parts.append(f"Budget: RM{self._cat['budget_amount']:,.2f}")
+        info_parts.append(f"Spent: RM{self._spent:,.2f}")
+
+        with Container(id="budget_cat_form_container"):
+            yield Label("[bold]Edit Category[/]", id="budget_cat_form_title")
+            yield Label(" | ".join(info_parts), id="budget_total_info")
+            yield Label("Name")
+            yield Input(
+                value=self._cat["name"],
+                id="budget_cat_name_input"
+            )
+            yield Label("Budget Impact")
+            yield Select(
+                self.IMPACT_OPTIONS,
+                value=self._cat["budget_impact"],
+                allow_blank=False, id="budget_cat_impact"
+            )
+            with Horizontal(id="budget_cat_form_buttons"):
+                yield Button("Save", variant="primary", id="budget_cat_save")
+            yield Label("Press Escape to close", id="budget_small_label")
+
+    def on_button_pressed(self, event: Button.Pressed):
+        if event.button.id == "budget_cat_save":
+            self._try_save()
+
+    def on_input_submitted(self, event: Input.Submitted):
+        self._try_save()
+
+    def _try_save(self):
+        new_name = self.query_one("#budget_cat_name_input", Input).value.strip()
+        new_impact = self.query_one("#budget_cat_impact", Select).value
+        if not new_name:
+            self.notify("Name is required.", severity="error")
+            return
+        self.dismiss({"name": new_name, "impact": new_impact})
+
+    def on_key(self, event):
+        if event.key == "escape":
+            self.dismiss(None)
+
+
+# ═══════════════════════════════════════════════════════════════
 # Delete Transaction Confirm Modal
 # ═══════════════════════════════════════════════════════════════
 

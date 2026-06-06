@@ -142,6 +142,23 @@ def get_category_sum(budget_id, exclude_id=None):
     return row["total"]
 
 
+def update_budget_category(category_id, budget_id, name, amount, impact):
+    conn = get_db()
+    try:
+        conn.execute(
+            """UPDATE budget_categories
+               SET name = ?, budget_amount = ?, budget_impact = ?
+               WHERE id = ? AND budget_id = ?""",
+            (name, amount, impact, category_id, budget_id)
+        )
+        conn.commit()
+        return True
+    except sqlite3.IntegrityError:
+        return False
+    finally:
+        conn.close()
+
+
 def delete_budget_category(category_id, budget_id):
     conn = get_db()
     # Look up category details before deleting

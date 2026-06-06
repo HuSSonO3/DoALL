@@ -1,0 +1,150 @@
+#job_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#job_main_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#job_filter_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#job_search { width: 30; margin-right: 1; }
+#job_filter_country { width: 28; margin-right: 1; }
+#job_filter_status { width: 28; }
+
+#job_action_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#job_action_row > Button {
+    margin-right: 1;
+}
+
+#job_count_label {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#job_table {
+    height: 1fr;
+    border: round $accent;
+}
+
+/* ── Form modal ── */
+JobFormModal, JobDeleteConfirmModal {
+    align: center middle;
+}
+
+#job_form_scroll {
+    width: 60%;
+    height: 43;
+    background: $surface;
+    border: round $primary;
+    padding: 1 2;
+}
+
+#job_form_title {
+    width: 100%;
+    text-align: center;
+    text-style: bold;
+    color: $accent;
+    margin-bottom: 1;
+    padding-bottom: 1;
+    border-bottom: solid $accent;
+}
+
+.job_form_row {
+    height: 4;
+    align: center middle;
+    margin-top: 0;
+    margin-bottom: 2;
+}
+
+.job_form_col {
+    width: 1fr;
+}
+
+.job_form_col > Label {
+    text-style: dim;
+    color: $text-muted;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 1;
+}
+
+.job_form_col > Input, .job_form_col > Select {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#job_salary_row {
+    height: auto;
+}
+
+#job_salary_row > Input {
+    width: 1fr;
+}
+
+#job_salary_per {
+    width: 18;
+    margin-left: 0;
+}
+
+#job_form_buttons {
+    width: 100%;
+    align: center middle;
+    margin-top: 0;
+}
+
+#job_save {
+    width: auto;
+    min-width: 16;
+}
+
+/* ── Delete modal ── */
+#job_del_container {
+    width: 40%;
+    height: 11;
+    max-height: 16;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+    align: center middle;
+}
+
+#job_del_label {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#job_del_buttons {
+    width: 100%;
+    align: center middle;
+}
+
+#job_del_confirm {
+    width: auto;
+    min-width: 16;
+}
+
+#job_small_label {
+    text-style: dim;
+    color: $text 40%;
+    margin-top: 1;
+    width: 100%;
+    text-align: center;
+}
