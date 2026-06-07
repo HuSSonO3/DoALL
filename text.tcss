@@ -9,15 +9,43 @@ ContentSwitcher{
 TabPane {
     overflow-y: auto;
     height: 1fr;
-    padding-bottom: 1;  /* adjust to match your footer height */
+    padding-bottom: 1;
 }
 
 Screen {
     layers: base floating;
 }
 
-/* Make the '+' tab Select dropdown taller — show all options */
+/* Make the '+' tab Select dropdown scrollable */
 SelectOverlay {
-    max-height: 30;
+    max-height: 18;
     height: auto;
+}
+
+/* ── Launcher / + tab ── */
+#launcher {
+    height: 100%;
+    padding: 2 20;
+}
+
+#launcher_logo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#launcher_subtitle {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2;
+}
+
+#launcher_prompt {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#tab-select {
+    width: 100%;
 }

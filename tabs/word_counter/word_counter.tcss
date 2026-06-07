@@ -1,0 +1,72 @@
+#wc_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#wc_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#wc_input {
+    height: 1fr;
+    margin-bottom: 1;
+}
+
+#wc_stats {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+.wc_stat_card {
+    width: 1fr;
+    height: auto;
+    padding: 1;
+    margin: 0 1;
+    border: round $surface;
+    text-align: center;
+}
+
+.wc_stat_label {
+    color: $text-muted;
+    text-style: dim;
+    width: 100%;
+    text-align: center;
+}
+
+.wc_stat_value {
+    width: 100%;
+    text-align: center;
+    text-style: bold;
+    color: $accent;
+}
+
+.wc_stat_note {
+    width: 100%;
+    text-align: center;
+}
+
+#wc_actions {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#wc_clear_btn {
+    width: auto;
+    min-width: 14;
+}
+
+#wc_kw_heading {
+    margin-bottom: 0;
+}
+
+#wc_keywords {
+    height: auto;
+    max-height: 10;
+    border: round $surface;
+}

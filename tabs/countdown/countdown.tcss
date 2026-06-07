@@ -1,0 +1,173 @@
+#cd_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#cd_main_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#cd_action_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 0;
+}
+
+#cd_action_row > Button {
+    margin-right: 1;
+}
+
+#cd_display_row {
+    height: 1fr;
+}
+
+/* ── Left: all events with countdown ── */
+#cd_left_panel {
+    width: 65%;
+    height: 100%;
+}
+
+#cd_left_heading {
+    text-style: dim;
+    color: $text-muted;
+    margin-bottom: 0;
+    height: 1;
+}
+
+#cd_event_list {
+    height: 1fr;
+    border: round $accent;
+}
+
+/* ── Event cards ── */
+.cd_event_card {
+    height: auto;
+    padding: 1;
+    border-bottom: solid $surface;
+}
+
+.cd_card_days {
+    width: 16;
+    height: 3;
+    text-align: center;
+    content-align: center middle;
+    color: $accent;
+    margin-right: 1;
+}
+
+.cd_card_days_past {
+    color: $error;
+}
+
+.cd_card_info {
+    width: 1fr;
+    height: auto;
+}
+
+.cd_card_name {
+    text-style: bold;
+}
+
+.cd_card_suffix {
+    text-style: dim;
+    color: $text-muted;
+}
+
+#cd_empty {
+    width: 100%;
+    text-align: center;
+    color: $text-muted;
+}
+
+/* ── Right: compact reference table ── */
+#cd_right_panel {
+    width: 35%;
+    height: 100%;
+    margin-left: 1;
+}
+
+#cd_right_heading {
+    text-style: dim;
+    color: $text-muted;
+    margin-bottom: 0;
+    height: 1;
+}
+
+#cd_ref_table {
+    height: 1fr;
+    border: round $surface;
+}
+
+/* ── Form modal ── */
+EventFormModal, DeleteConfirmModal {
+    align: center middle;
+}
+
+#cd_form_container {
+    width: 35%;
+    height: 45%;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+}
+
+#cd_form_title {
+    width: 100%;
+    text-align: center;
+    text-style: bold;
+    color: $accent;
+    margin-bottom: 1;
+    padding-bottom: 1;
+    border-bottom: solid $accent;
+}
+
+#cd_event_name, #cd_event_date {
+    margin-bottom: 1;
+}
+
+#cd_form_buttons {
+    width: 100%;
+    align: center middle;
+}
+
+#cd_save {
+    width: auto;
+    min-width: 16;
+}
+
+#cd_small_label {
+    text-style: dim;
+    color: $text 40%;
+    margin-top: 1;
+    width: 100%;
+    text-align: center;
+}
+
+/* ── Delete modal ── */
+#cd_del_container {
+    width: 35%;
+    height: 25%;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+}
+
+#cd_del_label {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#cd_del_buttons {
+    width: 100%;
+    align: center middle;
+}
+
+#cd_del_confirm {
+    width: auto;
+    min-width: 16;
+}
