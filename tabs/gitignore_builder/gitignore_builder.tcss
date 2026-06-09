@@ -1,0 +1,66 @@
+#gi_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#gi_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#gi_hint {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#gi_template_grid {
+    height: auto;
+    max-height: 14;
+    layout: grid;
+    grid-size: 3;
+    grid-gutter: 0 1;
+    margin-bottom: 1;
+    overflow-y: auto;
+}
+
+#gi_template_grid > Button {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#gi_actions {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#gi_actions > Button {
+    margin-right: 1;
+}
+
+#gi_output {
+    height: 1fr;
+}
+
+#gi_save_row {
+    width: 100%;
+    height: auto;
+    align: center middle;
+    margin-top: 1;
+}
+
+#gi_save_btn {
+    width: auto;
+    min-width: 18;
+}
+
+#gi_save_label {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+    min-height: 3;
+}

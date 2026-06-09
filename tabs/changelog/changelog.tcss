@@ -1,0 +1,51 @@
+#cl_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#cl_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#cl_version_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#cl_version_label {
+    width: auto;
+    margin-right: 1;
+}
+
+#cl_version {
+    width: 20;
+}
+
+#cl_input {
+    height: 1fr;
+    margin-bottom: 1;
+}
+
+#cl_actions {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#cl_actions > Button {
+    margin-right: 1;
+}
+
+#cl_output_heading {
+    margin-bottom: 0;
+    text-style: dim;
+}
+
+#cl_output {
+    height: 1fr;
+}

@@ -1,0 +1,309 @@
+#rm_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#rm_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#rm_tabs {
+    height: 1fr;
+}
+
+/* ═══ Add Tab ═══════════════════════════ */
+
+#rm_add_container {
+    padding: 1 0;
+}
+
+#rm_add_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+/* URL row */
+#rm_url_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 0;
+}
+
+#rm_url {
+    width: 1fr;
+}
+
+#rm_scrape_btn {
+    margin-left: 1;
+}
+
+#rm_scrape_status {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+/* Form */
+.rm_field_label {
+    margin-top: 1;
+    margin-bottom: 0;
+    text-style: dim;
+}
+
+#rm_title_input {
+    margin-bottom: 1;
+}
+
+.rm_meta_row {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.rm_meta_row > Input {
+    width: 1fr;
+    margin-right: 1;
+}
+
+#rm_ingredients {
+    height: auto;
+    min-height: 3;
+    max-height: 6;
+    margin-bottom: 1;
+}
+
+#rm_instructions {
+    height: auto;
+    min-height: 3;
+    max-height: 6;
+    margin-bottom: 1;
+}
+
+#rm_tags_display {
+    width: 100%;
+    margin-bottom: 1;
+    min-height: 1;
+}
+
+#rm_tags_container {
+    height: auto;
+    margin-bottom: 1;
+}
+
+.rm_tag_group_label {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.rm_tag_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 0;
+}
+
+.rm_tag_row > Button {
+    margin-right: 0;
+    margin-bottom: 0;
+    min-width: 8;
+}
+
+#rm_tags_custom {
+    margin-bottom: 1;
+}
+
+#rm_form_buttons {
+    height: auto;
+    align: center middle;
+    margin-bottom: 0;
+}
+
+#rm_form_buttons > Button {
+    margin-right: 1;
+}
+
+#rm_save_status {
+    width: 100%;
+    margin-bottom: 1;
+    min-height: 1;
+}
+
+/* ═══ Browse Tab ════════════════════════ */
+
+#rm_browse_container {
+    height: 100%;
+    padding: 1 0;
+}
+
+#rm_browse_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#rm_search_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#rm_search {
+    width: 1fr;
+}
+
+#rm_tag_filter {
+    width: 30;
+    margin-left: 1;
+}
+
+#rm_recipe_list {
+    height: auto;
+    max-height: 8;
+    border: round $surface;
+    margin-bottom: 1;
+}
+
+/* Detail view */
+#rm_detail {
+    height: 1fr;
+    border: round $accent;
+    padding: 1 2;
+}
+
+#rm_detail_title {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#rm_detail_time, #rm_detail_servings, #rm_detail_tags {
+    width: auto;
+    margin-right: 2;
+}
+
+.rm_section_label {
+    margin-top: 1;
+    margin-bottom: 0;
+}
+
+#rm_detail_ingredients {
+    height: auto;
+    min-height: 3;
+    max-height: 10;
+}
+
+#rm_detail_instructions {
+    height: 1fr;
+    min-height: 4;
+}
+
+#rm_detail_actions {
+    height: auto;
+    align: center middle;
+    margin-top: 1;
+}
+
+#rm_detail_actions > Button {
+    margin-right: 1;
+}
+
+/* ═══ Edit Modal ═══════════════════════ */
+
+RecipeEditModal {
+    align: center middle;
+}
+
+#rm_edit_container {
+    width: 80%;
+    height: 80%;
+    background: $surface;
+    border: round $primary;
+    padding: 1 2;
+}
+
+#rm_edit_title {
+    width: 100%;
+    text-align: center;
+    text-style: bold;
+    color: $accent;
+    margin-bottom: 1;
+    padding-bottom: 1;
+    border-bottom: solid $accent;
+}
+
+#rm_edit_tags_container {
+    height: auto;
+    margin-bottom: 1;
+}
+
+#rm_edit_ingredients {
+    height: auto;
+    min-height: 3;
+    max-height: 6;
+    margin-bottom: 1;
+}
+
+#rm_edit_instructions {
+    height: auto;
+    min-height: 3;
+    max-height: 6;
+    margin-bottom: 1;
+}
+
+#rm_edit_buttons {
+    width: 100%;
+    height: auto;
+    align: center middle;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+
+#rm_edit_save {
+    width: auto;
+    min-width: 16;
+    min-height: 3;
+}
+
+
+/* ═══ Delete Modal ═══════════════════════ */
+
+RecipeDeleteModal {
+    align: center middle;
+}
+
+#rm_del_container {
+    width: 40%;
+    height: 12;
+    max-height: 16;
+    background: $surface;
+    padding: 1 2;
+    border: round $primary;
+    align: center middle;
+}
+
+#rm_del_label {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#rm_del_buttons {
+    width: 100%;
+    align: center middle;
+}
+
+#rm_del_confirm {
+    width: auto;
+    min-width: 16;
+}
+
+#rm_small_label {
+    text-style: dim;
+    color: $text 40%;
+    margin-top: 1;
+    width: 100%;
+    text-align: center;
+}

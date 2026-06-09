@@ -20,3 +20,8 @@ from .job_tracker.job_tracker import JobTrackerTab
 from .countdown.countdown import CountdownTab
 from .word_counter.word_counter import WordCounterTab
 from .port_checker.port_checker import PortCheckerTab
+from .changelog.changelog import ChangelogTab
+from .qr_extractor.qr_extractor import QRToolTab
+from .gitignore_builder.gitignore_builder import GitignoreBuilderTab
+from .typing_test.typing_test import TypingTestTab
+from .recipes.recipes import RecipesTab

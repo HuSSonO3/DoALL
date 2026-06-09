@@ -1,0 +1,99 @@
+#qr_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#qr_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+/* ── Generate ────────────────────────────── */
+
+#qr_gen_section {
+    height: auto;
+    margin-bottom: 1;
+}
+
+#qr_gen_heading {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+#qr_gen_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#qr_gen_input {
+    width: 1fr;
+}
+
+#qr_gen_btn, #qr_gen_clear {
+    margin-left: 1;
+}
+
+#qr_gen_output {
+    height: auto;
+    min-height: 3;
+}
+
+#qr_gen_save_row {
+    width: 100%;
+    height: auto;
+    align: center middle;
+    margin-top: 1;
+}
+
+#qr_gen_save {
+    width: auto;
+    min-width: 18;
+}
+
+#qr_gen_save_label {
+    margin-top: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* ── Extract ─────────────────────────────── */
+
+#qr_ext_section {
+    height: 1fr;
+}
+
+#qr_ext_heading {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+#qr_ext_input_row {
+    height: auto;
+    margin-bottom: 1;
+}
+
+#qr_ext_input {
+    width: 1fr;
+    height: auto;
+    min-height: 3;
+    max-height: 6;
+}
+
+#qr_ext_clear {
+    margin-left: 1;
+    min-width: 10;
+}
+
+#qr_ext_type_label {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+#qr_ext_results {
+    height: 1fr;
+    border: round $accent;
+}

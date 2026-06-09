@@ -1,0 +1,97 @@
+#tt_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#tt_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+/* ── Prompt ─────────────────────────────── */
+
+#tt_prompt_card {
+    height: auto;
+    padding: 1 2;
+    border: round $surface;
+    margin-bottom: 1;
+}
+
+#tt_prompt {
+    width: 100%;
+}
+
+/* ── Input ──────────────────────────────── */
+
+#tt_input {
+    height: auto;
+    min-height: 3;
+    max-height: 5;
+    margin-bottom: 1;
+}
+
+/* ── Stats ──────────────────────────────── */
+
+#tt_stats {
+    height: auto;
+    align: center middle;
+    margin-bottom: 0;
+}
+
+.tt_stat_card {
+    width: 1fr;
+    height: auto;
+    padding: 1;
+    margin: 0 1;
+    border: round $surface;
+    text-align: center;
+}
+
+.tt_stat_label {
+    color: $text-muted;
+    text-style: dim;
+    width: 100%;
+    text-align: center;
+}
+
+.tt_stat_value {
+    width: 100%;
+    text-align: center;
+    text-style: bold;
+    color: $accent;
+}
+
+/* ── Result ─────────────────────────────── */
+
+#tt_result {
+    width: 100%;
+    text-align: center;
+    margin-top: 1;
+    margin-bottom: 1;
+}
+
+/* ── Actions ────────────────────────────── */
+
+#tt_actions {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#tt_actions > Button {
+    margin-right: 1;
+}
+
+/* ── History ────────────────────────────── */
+
+#tt_history_heading {
+    margin-bottom: 0;
+}
+
+#tt_history {
+    height: 1fr;
+    border: round $surface;
+}
