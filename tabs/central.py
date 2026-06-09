@@ -19,3 +19,4 @@ from .subnet_calc.subnet_calc import SubnetCalcTab
 from .job_tracker.job_tracker import JobTrackerTab
 from .countdown.countdown import CountdownTab
 from .word_counter.word_counter import WordCounterTab
+from .port_checker.port_checker import PortCheckerTab

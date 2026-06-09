@@ -1,12 +1,12 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Label, Tabs, TabbedContent, TabPane, Select
 from textual.containers import Container, Horizontal
-from tabs.central import NoteTakingTab, ClockTab, MusicTab, GamesTab, TodoTab, CheatSheetTab, TimeZoneTab, JsonToolTab, ColorPickerTab, BaseConverterTab, LoremTab, MoneyTab, BudgetTab, RandomPickerTab, UnitConverterTab, RegexTesterTab, CsvViewerTab, SubnetCalcTab, JobTrackerTab, CountdownTab, WordCounterTab
+from tabs.central import NoteTakingTab, ClockTab, MusicTab, GamesTab, TodoTab, CheatSheetTab, TimeZoneTab, JsonToolTab, ColorPickerTab, BaseConverterTab, LoremTab, MoneyTab, BudgetTab, RandomPickerTab, UnitConverterTab, RegexTesterTab, CsvViewerTab, SubnetCalcTab, JobTrackerTab, CountdownTab, WordCounterTab, PortCheckerTab
 
 class DoAllApp(App):
     """Demonstrates the Tabs widget."""
 
-    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss", "./tabs/games/games.tcss", "./tabs/todos/todos.tcss", "./tabs/cheats/cheats.tcss", "./tabs/timezones/timezones.tcss", "./tabs/json_tool/json_tool.tcss", "./tabs/color_picker/color_picker.tcss", "./tabs/base_converter/base_converter.tcss", "./tabs/lorem/lorem.tcss", "./tabs/money/money.tcss", "./tabs/budget/budget.tcss", "./tabs/random_picker/random_picker.tcss", "./tabs/unit_converter/unit_converter.tcss", "./tabs/regex_tester/regex_tester.tcss", "./tabs/csv_viewer/csv_viewer.tcss", "./tabs/subnet_calc/subnet_calc.tcss", "./tabs/job_tracker/job_tracker.tcss", "./tabs/countdown/countdown.tcss", "./tabs/word_counter/word_counter.tcss"]
+    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss", "./tabs/games/games.tcss", "./tabs/todos/todos.tcss", "./tabs/cheats/cheats.tcss", "./tabs/timezones/timezones.tcss", "./tabs/json_tool/json_tool.tcss", "./tabs/color_picker/color_picker.tcss", "./tabs/base_converter/base_converter.tcss", "./tabs/lorem/lorem.tcss", "./tabs/money/money.tcss", "./tabs/budget/budget.tcss", "./tabs/random_picker/random_picker.tcss", "./tabs/unit_converter/unit_converter.tcss", "./tabs/regex_tester/regex_tester.tcss", "./tabs/csv_viewer/csv_viewer.tcss", "./tabs/subnet_calc/subnet_calc.tcss", "./tabs/job_tracker/job_tracker.tcss", "./tabs/countdown/countdown.tcss", "./tabs/word_counter/word_counter.tcss", "./tabs/port_checker/port_checker.tcss"]
 
     TAB_OPTIONS = [
         ("[dim]── Time & Planning ──[/]", None),
@@ -31,6 +31,7 @@ class DoAllApp(App):
         ("Regex Tester", RegexTesterTab("Regex Tester", id="regex_tester")),
         ("CSV Viewer", CsvViewerTab("CSV Viewer", id="csv_viewer")),
         ("Subnet Calc", SubnetCalcTab("Subnet Calc", id="subnet_calc")),
+        ("Port Checker", PortCheckerTab("Port Checker", id="port_checker")),
         ("Lorem Ipsum", LoremTab("Lorem Ipsum", id="lorem")),
 
         ("[dim]── Converters & Calculators ──[/]", None),

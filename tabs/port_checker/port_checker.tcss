@@ -1,0 +1,42 @@
+#port_container {
+    height: 100%;
+    width: 100%;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#port_title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+#port_input_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#port_input {
+    width: 50;
+}
+
+#port_action_row {
+    height: auto;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+#port_action_row > Button {
+    margin-right: 1;
+}
+
+#port_status {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#port_results {
+    height: 1fr;
+    border: round $accent;
+}
