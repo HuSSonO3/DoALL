@@ -40,12 +40,23 @@ SelectOverlay {
     margin-bottom: 2;
 }
 
-#launcher_prompt {
+#launcher_picker {
     width: 100%;
-    text-align: center;
-    margin-bottom: 1;
+    height: auto;
+    align: center middle;
 }
 
-#tab-select {
+#cat-select {
+    width: 1fr;
+    margin-right: 1;
+}
+
+#tool-select {
+    width: 1fr;
+}
+
+#launcher_known_issue {
     width: 100%;
+    text-align: center;
+    margin-top: 1;
 }
