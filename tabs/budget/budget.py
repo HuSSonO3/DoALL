@@ -182,30 +182,6 @@ class BudgetWidget(Widget, can_focus=True):
             return
 
         cat_id = int(cat_val)
-        # For decrease categories, check spending doesn't exceed the category budget
-        cats = get_budget_categories(self._budget_id)
-        cat_impact = None
-        cat_budget = 0.0
-        for c in cats:
-            if c["id"] == cat_id:
-                cat_impact = c["budget_impact"]
-                cat_budget = c["budget_amount"]
-                break
-
-        if cat_impact == "decrease":
-            summaries = get_category_summary(self._budget_id)
-            for s in summaries:
-                if s["id"] == cat_id:
-                    if s["spent"] + amount > cat_budget:
-                        over = (s["spent"] + amount) - cat_budget
-                        self.notify(
-                            f"Over budget! RM {s['spent']:,.2f} already spent, "
-                            f"RM {amount:,.2f} would exceed by RM {over:,.2f}.",
-                            severity="error"
-                        )
-                        return
-                    break
-
         add_budget_transaction(self._budget_id, cat_id, date_val, amount, note)
 
         # Clear inputs

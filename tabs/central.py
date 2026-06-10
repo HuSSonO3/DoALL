@@ -25,3 +25,4 @@ from .qr_extractor.qr_extractor import QRToolTab
 from .gitignore_builder.gitignore_builder import GitignoreBuilderTab
 from .typing_test.typing_test import TypingTestTab
 from .recipes.recipes import RecipesTab
+from .habits.habits import HabitTab
