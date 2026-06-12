@@ -2,9 +2,9 @@ from textual.app import ComposeResult
 from textual.screen import Screen
 from textual.widgets import Footer, Placeholder, TabPane, Label
 from textual.containers import Container, Horizontal, VerticalScroll
+from textual.widget import Widget
 
-class TemplateTab(TabPane):
-
+class TemplateWidget(Widget):
     def compose(self) -> ComposeResult:
             
         yield VerticalScroll(
@@ -46,5 +46,10 @@ class TemplateTab(TabPane):
         id="template_top",),
                     
     id="template_content",)
+
+class TemplateTab(TabPane):
+    yield TemplateWidget()
+
+    
             
 
