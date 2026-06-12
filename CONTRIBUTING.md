@@ -1,6 +1,6 @@
 # Contributing to DoALL
 
-Erm ig yall might wanna contribute ? sure
+Erm ig yall might wanna contribute ? sure. We use uv instead of pip cuz its better so install it first.
 
 ## Quickstart
 
@@ -18,13 +18,20 @@ cd DoALL
 git checkout -b feature/my-module
 ```
 
-4. **Run** the app in development mode:
+4. **Create a virtual environment**:
+
+```bash
+uv venv
+source .venv/bin/activate
+```
+
+5. **Run** the app in development mode:
 
 ```bash
 uv run textual run --dev main.py
 ```
 
-5. **Run Debug** (Optional):
+6. **Run Debug** (Optional):
 ```bash
 uv run textual console
 ```
