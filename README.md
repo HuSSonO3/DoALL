@@ -122,3 +122,9 @@ Just be nice and I will try to be as active as possible to review PRs lol.
 > **Package Issues** Even though there is a package released, I havn't tested the MacOS and Windows version myself so it might not work as intended for certain modules that don't have the same packages that are used "Mainly Music uses ffplay, mpv, aplay, or afplay so if it doesn't exist in the OS it might not work".
 >
 > **Data Hit/Miss:** Some modules data might be out of date / inaccurate so do take them with a grain of salt.
+
+---
+
+## License 
+View [License](LICENSE).
+
