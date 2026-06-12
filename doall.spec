@@ -7,22 +7,65 @@ a = Analysis(
     binaries=[],
     datas=[
         ('text.tcss', '.'),
-        ('tabs/noting', 'tabs/noting'),
-        ('tabs/clock', 'tabs/clock'),
-        ('tabs/music', 'tabs/music'),
-        ('tabs/games', 'tabs/games'),
-        ('tabs/todos', 'tabs/todos'),
-        ('tabs/cheats', 'tabs/cheats'),
-        ('tabs/timezones', 'tabs/timezones'),
-        ('tabs/json_tool', 'tabs/json_tool'),
-        ('tabs/color_picker', 'tabs/color_picker'),
+        # ── Tab modules (tcss files included) ──
         ('tabs/base_converter', 'tabs/base_converter'),
+        ('tabs/budget', 'tabs/budget'),
+        ('tabs/changelog', 'tabs/changelog'),
+        ('tabs/cheats', 'tabs/cheats'),
+        ('tabs/clock', 'tabs/clock'),
+        ('tabs/color_picker', 'tabs/color_picker'),
+        ('tabs/countdown', 'tabs/countdown'),
+        ('tabs/csv_viewer', 'tabs/csv_viewer'),
+        ('tabs/games', 'tabs/games'),
+        ('tabs/gitignore_builder', 'tabs/gitignore_builder'),
+        ('tabs/habits', 'tabs/habits'),
+        ('tabs/job_tracker', 'tabs/job_tracker'),
+        ('tabs/json_tool', 'tabs/json_tool'),
         ('tabs/lorem', 'tabs/lorem'),
+        ('tabs/money', 'tabs/money'),
+        ('tabs/music', 'tabs/music'),
+        ('tabs/noting', 'tabs/noting'),
+        ('tabs/port_checker', 'tabs/port_checker'),
+        ('tabs/qr_extractor', 'tabs/qr_extractor'),
+        ('tabs/random_picker', 'tabs/random_picker'),
+        ('tabs/recipes', 'tabs/recipes'),
+        ('tabs/regex_tester', 'tabs/regex_tester'),
+        ('tabs/subnet_calc', 'tabs/subnet_calc'),
+        ('tabs/timezones', 'tabs/timezones'),
+        ('tabs/todos', 'tabs/todos'),
+        ('tabs/typing_test', 'tabs/typing_test'),
+        ('tabs/unit_converter', 'tabs/unit_converter'),
+        ('tabs/word_counter', 'tabs/word_counter'),
+        # ── File-holder data dirs ──
         ('file_holders', 'file_holders'),
-    ] + collect_data_files('tree_sitter') + collect_data_files('tree_sitter_markdown'),
+    ] + collect_data_files('tree_sitter') + collect_data_files('tree_sitter_markdown')
+      + collect_data_files('mf2py')
+      + collect_data_files('extruct')
+      + collect_data_files('recipe_scrapers'),
     hiddenimports=[
         'tzdata',
-    ] + collect_submodules('textual') + collect_submodules('tree_sitter') + collect_submodules('tree_sitter_markdown') + collect_submodules('tree_sitter_python') + collect_submodules('tree_sitter_json') + collect_submodules('tree_sitter_bash') + collect_submodules('tree_sitter_css') + collect_submodules('tree_sitter_html') + collect_submodules('tree_sitter_xml') + collect_submodules('tree_sitter_yaml') + collect_submodules('tree_sitter_sql') + collect_submodules('tree_sitter_toml') + collect_submodules('tree_sitter_regex') + collect_submodules('tree_sitter_java') + collect_submodules('tree_sitter_javascript') + collect_submodules('tree_sitter_go') + collect_submodules('tree_sitter_rust'),
+    ] + collect_submodules('textual')
+      + collect_submodules('tree_sitter')
+      + collect_submodules('tree_sitter_markdown')
+      + collect_submodules('tree_sitter_python')
+      + collect_submodules('tree_sitter_json')
+      + collect_submodules('tree_sitter_bash')
+      + collect_submodules('tree_sitter_css')
+      + collect_submodules('tree_sitter_html')
+      + collect_submodules('tree_sitter_xml')
+      + collect_submodules('tree_sitter_yaml')
+      + collect_submodules('tree_sitter_sql')
+      + collect_submodules('tree_sitter_toml')
+      + collect_submodules('tree_sitter_regex')
+      + collect_submodules('tree_sitter_java')
+      + collect_submodules('tree_sitter_javascript')
+      + collect_submodules('tree_sitter_go')
+      + collect_submodules('tree_sitter_rust')
+      + collect_submodules('qrcode')
+      + collect_submodules('PIL')
+      + collect_submodules('recipe_scrapers')
+      + collect_submodules('extruct')
+      + collect_submodules('mf2py'),
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

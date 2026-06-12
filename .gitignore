@@ -3,7 +3,8 @@
 __pycache__/
 *.pyc
 dist/
-file_holders/
+file_holders/**
+!file_holders/**/.gitkeep
 *.db
 .claude/
 CLAUDE.md
