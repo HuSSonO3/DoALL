@@ -65,9 +65,17 @@ A terminal TUI dashboard for doing everything — notes, clock, music, games, to
 ### Package
 **Download and Run**: 
 
-Download the current version from the packages tab. Latest version might not have the acutal latest modules, if wanted then clone repository.
+Download the current version from the packages tab. 
+
+Latest version might not have the acutal latest modules, if wanted then clone repository.
+
+in Linux: Open the directory where the app is downloaded and run it using.
+```bash
+./doall
+```
 
 ### Clone Repository
+Make sure that you have uv "we don't use pip here"
 
 1. Clone the repository:
 ```bash
@@ -95,14 +103,22 @@ Just be nice and I will try to be as active as possible to review PRs lol.
 
 ---
 
+## Pictures!
+
+<img width="1844" height="957" alt="image" src="https://github.com/user-attachments/assets/d985da9a-7c4a-4d16-8552-95538d75ab15" />
+
+
+<img width="1844" height="957" alt="image" src="https://github.com/user-attachments/assets/4fafaec7-5d88-46e2-888a-f6a80c17614a" />
+
+
+---
+
 > [!NOTE]
-
 > **AI-generated content:** This README, some modules, and portions of the codebase were generated with assistance from Claude Code (Anthropic) and the DeepSeek API "mostly me just testing how to guide the AI properly to make it make what I want while I focus on my other projects so some code might suck but it does the work ig?". 
-
+>
 > **Note:** Some modules have layout elements that require a wider terminal. If buttons or side panels appear clipped, increase your terminal width to fully view all features.
 
 > [!CAUTION]
-
 > **Package Issues** Even though there is a package released, I havn't tested the MacOS and Windows version myself so it might not work as intended for certain modules that don't have the same packages that are used "Mainly Music uses ffplay, mpv, aplay, or afplay so if it doesn't exist in the OS it might not work".
-
+>
 > **Data Hit/Miss:** Some modules data might be out of date / inaccurate so do take them with a grain of salt.
