@@ -101,9 +101,8 @@ from .<name>.<name> import MyTab
 
 In `main.py` — three things:
 
-1. Add to the import line at the top
-2. Add to a category in `TAB_CATEGORIES`
-3. Add the tcss path to `CSS_PATH`
+1. Add to a category in `TAB_CATEGORIES`
+2. Add the tcss path to `CSS_PATH`
 
 ```python
 # Import

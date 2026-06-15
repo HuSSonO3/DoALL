@@ -1,12 +1,45 @@
 from textual.app import App, ComposeResult
-from textual.widgets import Footer, Label, Tabs, TabbedContent, TabPane, Select
 from textual.containers import Container, Horizontal
-from tabs.central import NoteTakingTab, ClockTab, MusicTab, GamesTab, TodoTab, CheatSheetTab, TimeZoneTab, JsonToolTab, ColorPickerTab, BaseConverterTab, LoremTab, MoneyTab, BudgetTab, RandomPickerTab, UnitConverterTab, RegexTesterTab, CsvViewerTab, SubnetCalcTab, JobTrackerTab, CountdownTab, WordCounterTab, PortCheckerTab, ChangelogTab, QRToolTab, GitignoreBuilderTab, TypingTestTab, RecipesTab, HabitTab
+from textual.widgets import Footer, Label, Select, TabbedContent, TabPane, Tabs
+
+from tabs.central import *
+
 
 class DoAllApp(App):
     """Demonstrates the Tabs widget."""
 
-    CSS_PATH = ["text.tcss", "./tabs/noting/noting.tcss", "./tabs/clock/clock.tcss", "./tabs/music/music.tcss", "./tabs/games/games.tcss", "./tabs/todos/todos.tcss", "./tabs/cheats/cheats.tcss", "./tabs/timezones/timezones.tcss", "./tabs/json_tool/json_tool.tcss", "./tabs/color_picker/color_picker.tcss", "./tabs/base_converter/base_converter.tcss", "./tabs/lorem/lorem.tcss", "./tabs/money/money.tcss", "./tabs/budget/budget.tcss", "./tabs/random_picker/random_picker.tcss", "./tabs/unit_converter/unit_converter.tcss", "./tabs/regex_tester/regex_tester.tcss", "./tabs/csv_viewer/csv_viewer.tcss", "./tabs/subnet_calc/subnet_calc.tcss", "./tabs/job_tracker/job_tracker.tcss", "./tabs/countdown/countdown.tcss", "./tabs/word_counter/word_counter.tcss", "./tabs/port_checker/port_checker.tcss", "./tabs/changelog/changelog.tcss", "./tabs/qr_extractor/qr_extractor.tcss", "./tabs/gitignore_builder/gitignore_builder.tcss", "./tabs/typing_test/typing_test.tcss", "./tabs/recipes/recipes.tcss", "./tabs/habits/habits.tcss"]
+    CSS_PATH = [
+        "text.tcss",
+        "./tabs/noting/noting.tcss",
+        "./tabs/clock/clock.tcss",
+        "./tabs/music/music.tcss",
+        "./tabs/games/games.tcss",
+        "./tabs/todos/todos.tcss",
+        "./tabs/cheats/cheats.tcss",
+        "./tabs/timezones/timezones.tcss",
+        "./tabs/json_tool/json_tool.tcss",
+        "./tabs/color_picker/color_picker.tcss",
+        "./tabs/base_converter/base_converter.tcss",
+        "./tabs/lorem/lorem.tcss",
+        "./tabs/money/money.tcss",
+        "./tabs/budget/budget.tcss",
+        "./tabs/random_picker/random_picker.tcss",
+        "./tabs/unit_converter/unit_converter.tcss",
+        "./tabs/regex_tester/regex_tester.tcss",
+        "./tabs/csv_viewer/csv_viewer.tcss",
+        "./tabs/subnet_calc/subnet_calc.tcss",
+        "./tabs/job_tracker/job_tracker.tcss",
+        "./tabs/countdown/countdown.tcss",
+        "./tabs/word_counter/word_counter.tcss",
+        "./tabs/port_checker/port_checker.tcss",
+        "./tabs/changelog/changelog.tcss",
+        "./tabs/qr_extractor/qr_extractor.tcss",
+        "./tabs/gitignore_builder/gitignore_builder.tcss",
+        "./tabs/typing_test/typing_test.tcss",
+        "./tabs/recipes/recipes.tcss",
+        "./tabs/habits/habits.tcss",
+        "./tabs/calorie_budgeter/calorie_budgeter.tcss",
+    ]
 
     TAB_CATEGORIES = {
         "Time & Planning": [
@@ -34,7 +67,10 @@ class DoAllApp(App):
             ("Port Checker", PortCheckerTab("Port Checker", id="port_checker")),
             ("Changelog Gen", ChangelogTab("Changelog Gen", id="changelog")),
             ("QR Gen & Extract", QRToolTab("QR Gen & Extract", id="qr_tool")),
-            ("Gitignore Builder", GitignoreBuilderTab("Gitignore Builder", id="gitignore_builder")),
+            (
+                "Gitignore Builder",
+                GitignoreBuilderTab("Gitignore Builder", id="gitignore_builder"),
+            ),
             ("Lorem Ipsum", LoremTab("Lorem Ipsum", id="lorem")),
         ],
         "Converters & Calc": [
@@ -50,14 +86,17 @@ class DoAllApp(App):
         "Life & Home": [
             ("Recipe Manager", RecipesTab("Recipe Manager", id="recipes")),
             ("Habit Tracker", HabitTab("Habit Tracker", id="habits")),
+            (
+                "Calorie Budgeter",
+                CalorieBudgeterTab("Calorie Budgeter", id="calorie_budgeter"),
+            ),
         ],
     }
 
     OPEN_TABS = []
 
     BINDINGS = [
-    ("x", "exit", "Exit Tab (Except '+')"),
-
+        ("x", "exit", "Exit Tab (Except '+')"),
     ]
 
     def compose(self) -> ComposeResult:
@@ -73,11 +112,11 @@ class DoAllApp(App):
                         "░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      \n"
                         "░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      \n"
                         "░▒▓███████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓████████▓▒░",
-                        id="launcher_logo"
+                        id="launcher_logo",
                     )
                     yield Label(
                         "[dim]Your all-in-one terminal dashboard[/]",
-                        id="launcher_subtitle"
+                        id="launcher_subtitle",
                     )
                     with Horizontal(id="launcher_picker"):
                         yield Select(
@@ -124,7 +163,9 @@ class DoAllApp(App):
 
         content.show_tab(tab_pane.id)
 
-    def on_tabbed_content_tab_activated(self, event: TabbedContent.TabActivated) -> None:
+    def on_tabbed_content_tab_activated(
+        self, event: TabbedContent.TabActivated
+    ) -> None:
         """Reset the + tab Selects whenever it becomes active."""
         if event.pane.id == "add":
             self.query_one("#cat-select", Select).clear()
@@ -133,7 +174,7 @@ class DoAllApp(App):
     async def action_exit(self) -> None:
         tabbed_content = self.query_one(TabbedContent)
         active_pane = tabbed_content.get_pane(tabbed_content.active)
-        if(not active_pane.id == "add"):
+        if not active_pane.id == "add":
             await tabbed_content.remove_pane(active_pane.id)
             self.OPEN_TABS.remove(active_pane)
 
